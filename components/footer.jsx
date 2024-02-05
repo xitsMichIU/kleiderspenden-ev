@@ -5,10 +5,10 @@ export default function Footer() {
         <>
             <ul className="nav justify-content-center">
                 <li className="nav-item">
-                    <a className="nav-link" href="/">Impressum</a>
+                    <a className="nav-link" href="/legal">Impressum</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/">Datenschutzerklärung</a>
+                    <a className="nav-link" href="/privacy">Datenschutzerklärung</a>
                 </li>
             </ul>
         </>

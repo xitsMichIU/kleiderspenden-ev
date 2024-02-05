@@ -1,24 +1,10 @@
-import React from "react";
+//Imports 
+import "bootstrap/dist/css/bootstrap.min.css"
 
-function DeliveryMethod() {
-    return (
-        <div style={{ padding: '0.2‚em' }}>
-            <p>Wie möchtest du deine Keleidung Spenden?</p>
-            <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" defaultChecked />
-                <label className="btn btn-outline-primary" htmlFor="btnradio1">Anholung</label>
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" />
-                <label className="btn btn-outline-primary" htmlFor="btnradio2">Abgabe vor Ort</label>
-            </div>
-        </div>
-    )
-}
-
-export default function Form() {
+export default function Donate() {
 
     return (
         <form>
-
             <div style={{ padding: '0.5em' }}>
                 <h1>Registieren zur Kleiderspende</h1>
                 <p>Bitte nutzen sie folgendes Formular um sich für die Abgabe einer Kleiderspende zu registieren.</p>
