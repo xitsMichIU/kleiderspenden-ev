@@ -3,8 +3,10 @@ import React from "react";
 export default function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#e3f2fd" }}>
+
             <div className="container-fluid">
-                <a className="navbar-brand" href="/">Kleiderspenden E.V</a>
+                <a className="navbar-brand" href="/">
+                    <img src="/img/logo.svg" alt="Bootstrap" width="34" height="34" /> Kleiderspenden E.V</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
