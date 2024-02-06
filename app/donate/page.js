@@ -1,50 +1,40 @@
 //Imports 
-import "bootstrap/dist/css/bootstrap.min.css"
+"use client";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import Collectform from "@/components/collectform";
+import Deliveryform from "@/components/deliveryform";
 
-export default function Donate() {
+
+export default function donationType() {
+
+    const [selectedRadio, setSelectedRadio] = useState('btnradio1');
+
+    const handleRadioChange = (event) => {
+        setSelectedRadio(event.target.id);
+    };
 
     return (
-        <form>
-            <div style={{ padding: '0.5em' }}>
-                <h1>Registieren zur Kleiderspende</h1>
-                <p>Bitte nutzen sie folgendes Formular um sich für die Abgabe einer Kleiderspende zu registieren.</p>
+        <div>
+            <h1>Registieren zur Kleiderspende</h1>
+            <p>Bitte nutzen sie folgendes Formular um sich für die Abgabe einer Kleiderspende zu registieren.</p>
 
-                <div className="border border-primary rounded border-1" style={{ padding: '0.5em' }}>
-                    <div className="row">
-                        <div className="col">
-                            <label className="form-label">Vorname</label>
-                            <input type="text" className="form-control" placeholder="" aria-label="First name" />
-                        </div>
-                        <div className="col">
-                            <label className="form-label">Nachname</label>
-                            <input type="text" className="form-control" placeholder="" aria-label="Last name" />
-                        </div>
-                    </div>
+            <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input onChange={handleRadioChange} type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" defaultChecked />
+                <label className="btn btn-outline-primary" htmlFor="btnradio1">Abholung mit Sammelfahrzeug</label>
 
-                    <div className="row">
-                        <div className="col">
-                            <label className="form-label">Straße und Hausnummer</label>
-                            <input type="text" className="form-control" id="firstName" />
-                        </div>
-                        <div className="col">
-                            <label className="form-label">Postleitzahl</label>
-                            <input type="text" className="form-control" id="firstName" />
-                        </div>
-                    </div>
-
-                    <div className="mb-3">
-                        <label className="form-label">Ort</label>
-                        <input type="text" className="form-control" id="firstName" />
-                    </div>
-
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Email Adresse</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    </div>
-
-                    <button type="submit" className="btn btn-primary">Verbindlich registieren</button>
-                </div>
+                <input onChange={handleRadioChange} type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" />
+                <label className="btn btn-outline-primary" htmlFor="btnradio2">Übergabe an der Geschäftsstelle</label>
             </div>
-        </form>
-    );
-};
+
+            <div>
+                {selectedRadio === 'btnradio1' && <Collectform />}
+                {selectedRadio === 'btnradio2' && <Deliveryform />}
+            </div>
+
+        </div>
+
+    )
+
+}
+
