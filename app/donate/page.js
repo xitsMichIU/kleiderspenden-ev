@@ -2,15 +2,18 @@
 "use client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import Collectform from "@/components/collectform";
-import Deliveryform from "@/components/deliveryform";
+import Collectform from "@/components/pickup";
+import Deliveryform from "@/components/dropoff";
 
 
-export default function donationType() {
+export default function DonationType() {
 
+    //Parameter 1 ist die Variable, Parameter zwei die Funktion, der Wert in useState ist der Default Value
     const [selectedRadio, setSelectedRadio] = useState('btnradio1');
 
+    //Variable dei eine Pfeilfunktion speichert
     const handleRadioChange = (event) => {
+        //Der State wird auf den Ausgewählten Radio Button gesetzt. 
         setSelectedRadio(event.target.id);
     };
 
@@ -28,9 +31,18 @@ export default function donationType() {
             </div>
 
             <div>
-                {selectedRadio === 'btnradio1' && <Collectform />}
-                {selectedRadio === 'btnradio2' && <Deliveryform />}
+                {(() => {
+                    //Funktion wählt das zu rendernde Element basierend auf dem Use State aus
+                    if (selectedRadio === 'btnradio1') {
+                        return <Collectform />;
+                    } else if (selectedRadio === 'btnradio2') {
+                        return <Deliveryform />;
+                    } else {
+                        return null;
+                    }
+                })()}
             </div>
+
 
         </div>
 

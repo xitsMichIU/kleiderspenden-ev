@@ -6,7 +6,7 @@ export default function Navbar() {
 
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    <img src="/img/logo.svg" alt="Bootstrap" width="34" height="34" /> Kleiderspenden E.V</a>
+                    <img src="/img/logo.svg" alt="Bootstrap" width="34" height="34" /></a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -16,10 +16,13 @@ export default function Navbar() {
                             <a className="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/donate">Spenden</a>
+                            <a className="nav-link" href="/donate">Kleidung spenden</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/about">Über uns</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/testseite">Testseite</a>
                         </li>
                     </ul>
                 </div>
