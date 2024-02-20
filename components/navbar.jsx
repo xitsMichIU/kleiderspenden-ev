@@ -1,32 +1,25 @@
-import React from "react";
+'use client'
 
-export default function Navbar() {
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+function CollapsibleExample() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#e3f2fd" }}>
-
-            <div className="container-fluid">
-                <a className="navbar-brand" href="/">
-                    <img src="/img/logo.svg" alt="Bootstrap" width="34" height="34" /></a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarText">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/donate">Kleidung spenden</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/about">Über uns</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/testseite">Testseite</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <Navbar style={{ backgroundColor: "#e3f2fd" }} collapseOnSelect expand="lg" >
+            <Container>
+                <Navbar.Brand href="/"><img src="/img/logo.svg" width="30" height="30" className="d-inline-block align-top" alt="React Bootstrap logo" /> </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="donate">Kleidung Spenden</Nav.Link>
+                        <Nav.Link href="about">Über uns</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 }
+
+export default CollapsibleExample;

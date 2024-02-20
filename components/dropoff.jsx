@@ -27,7 +27,7 @@ export default function PickUp() {
                     </select>
                 </div>
 
-                <button type="submit" className="btn btn-primary">Weiter</button>
+                <button className="btn btn-primary">Weiter</button>
             </div>
         </>
     );

@@ -1,6 +1,8 @@
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+
 import "bootstrap/dist/css/bootstrap.min.css"
+import "/Users/michaelgeigges/GitHub/kleiderspenden-ev/app/style.css"
 
 export const metadata = {
   title: "Kleiderspenden E.V",
