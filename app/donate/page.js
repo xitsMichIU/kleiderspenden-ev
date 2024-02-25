@@ -11,7 +11,7 @@ export default function DonationType() {
     //Parameter 1 ist die Variable, Parameter zwei die Funktion, der Wert in useState ist der Default Value
     const [option, setOption] = useState(0);
 
-    //Variable dei eine Pfeilfunktion speichert
+    //Variable die eine Pfeilfunktion speichert
     const optionChange = (event) => {
         //Der State wird auf die Ausgewählte Option gesetzt. 
         setOption(event.target.value);
@@ -19,25 +19,9 @@ export default function DonationType() {
 
     return (
         <div>
-            <h1>Kleiderspende Registrierung</h1>
-
-            <p>Bitte nutzen Sie das folgende Formular, um sich für die Abgabe einer Kleiderspende zu registrieren. Der Prozess ist in drei Schritte unterteilt:</p>
-
-            <ol>
-                <li>
-                    <p>Schritt: Methode und Krisengebiet wählen</p>
-                </li>
-
-                <li>
-                    <p>Schritt: Kleidung auswählen</p>
-                </li>
-
-                <li>
-                    <p>Schritt: Zusammenfassung</p>
-                </li>
-            </ol>
-
+            <div>{beschreibung()}</div>        
             <div className="border border-primary rounded border-1" style={{ padding: '0.5em' }}>
+            <label className="form-label">Wie möchten Sie Spenden?</label>
                 <select default="Bitte Wählen sie die Methode" value={option} onChange={optionChange} className="form-select">
                     <option value="0">Methode Wählen</option>
                     <option value="1">Abholung</option>
@@ -82,19 +66,19 @@ function beschreibung() {
 
             <ol>
                 <li>
-                    <h2>Schritt 1: Stammdaten eingeben</h2>
-                    <p>Bitte geben Sie zuerst Ihre Stammdaten ein, um den Registrierungsprozess zu starten.</p>
+                    <p>Schritt 1: Methode Wählen</p>
+                    <p>Bitte geben sie an ob sie die Kleidung von unserem Sammelfahrzeug abholen lassen wollen oder ob sie sie in der Filiale abgeben möchten.</p>
                 </li>
 
                 <li>
-                    <h2>Schritt 2: Kleidung auswählen</h2>
-                    <p>Nachdem Sie Ihre Stammdaten eingegeben haben, können Sie nun die Kleidungsstücke auswählen, die Sie spenden möchten.</p>
+                    <p>Daten Eingeben</p>
+                    <p>Geben sie im Falle einer Abholung ihre Adressinformationen ein. Bitte nennen sie uns die Art und Menge der Kleidung die Sie spenden möchten.</p>
 
                 </li>
 
                 <li>
-                    <h2>Schritt 3: Zusammenfassung</h2>
-                    <p>Nach erfolgreicher Auswahl können Sie Ihre Spende entweder von uns abholen lassen oder sie bequem in unserer Geschäftsstelle vorbeibringen.</p>
+                    <p>Zusammenfassung</p>
+                    <p>Ihre Angaben werden ihnen noch mals angezeigt</p>
                 </li>
             </ol>
 

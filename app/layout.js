@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
+
 import "bootstrap/dist/css/bootstrap.min.css"
 import "/Users/michaelgeigges/GitHub/kleiderspenden-ev/app/style.css"
 
@@ -17,9 +18,9 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <nav>
-          <Navbar />
+          <Navbar/>
         </nav>
-        <main>{children}</main>
+        <main style={{ marginLeft: '100px', marginRight: '100px', marginTop:'10px' }}>{children}</main>
         <footer>
           <Footer />
         </footer>

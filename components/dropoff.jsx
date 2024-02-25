@@ -1,4 +1,6 @@
 import React from "react";
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 export default function PickUp() {
 
@@ -26,6 +28,14 @@ export default function PickUp() {
                         <option value="2">Ukraine</option>
                     </select>
                 </div>
+
+                <div className="mb-3">
+                <label className="form-label">Was möchten sie gern Spenden?</label>
+                    <InputGroup>
+                        <Form.Control as="textarea" aria-label="With textarea" />
+                    </InputGroup>
+                </div>
+
 
                 <button className="btn btn-primary">Weiter</button>
             </div>
