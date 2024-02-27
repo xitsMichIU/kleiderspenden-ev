@@ -13,10 +13,6 @@ export default function Home() {
       <p>
         Sie können uns unterstützen, indem Sie Kleidung spenden, Freiwilliger werden oder unsere Mission durch Spenden fördern. Jede Hilfe zählt und trägt dazu bei, das Leben der Menschen zu verbessern.
       </p>
-      <h3>Aktuelle Projekte</h3>
-      <p>
-        Erfahren Sie mehr über unsere aktuellen Projekte und wie Sie sich beteiligen können, um positive Veränderungen in unserer Gemeinschaft zu bewirken.
-      </p>
     </>
   );
 }

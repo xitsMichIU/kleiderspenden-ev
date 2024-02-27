@@ -1,4 +1,20 @@
-#1{
+main {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.1em;
+}
+
+#navigation {
     background-color: #e3f2fd;
 }
 
+#formularRahmen{
+    padding: 1.0em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.1em;
+}
+
+#footer{
+    background-color: #e3f2fd;
+}

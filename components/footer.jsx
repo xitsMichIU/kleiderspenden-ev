@@ -1,11 +1,12 @@
-import React from "react";
-import Navbar from 'react-bootstrap/Navbar';
+//Importiert das CSS File das eigene Anpassungen enthält
+import "/app/style.css"
 
-export default function Footer() {
+//Erstellt die Komponente des Footers
+function Footer() {
     return (
         <>
-            <Navbar sticky="bottom">
-            <ul className="nav justify-content-center">
+            {/*Enthält die Navigationselemente*/}
+            <ul id="footer" className="nav justify-content-center sticky-bottom">
                 <li className="nav-item">
                     <a className="nav-link" href="/legal">Impressum</a>
                 </li>
@@ -13,7 +14,8 @@ export default function Footer() {
                     <a className="nav-link" href="/privacy">Datenschutzerklärung</a>
                 </li>
             </ul>
-        </Navbar >
         </>
     );
 }
+
+export default Footer;

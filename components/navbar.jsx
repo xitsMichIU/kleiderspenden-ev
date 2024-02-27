@@ -1,16 +1,25 @@
+//Client Komponente wegen "Use State"
 'use client'
 
+//Importiert die benötigten Komponenten des React boostrap Frameworks
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function CollapsibleExample() {
+//Importiert das CSS File das eigene Anpassungen enthält
+import "/app/style.css"
+
+//Komponente für die Navigation
+function Navigation() {
     return (
-        <Navbar style={{backgroundColor: "#e3f2fd"}} collapseOnSelect expand="lg" >
+        <Navbar id="navigation" collapseOnSelect expand="lg" >
+            {/*Enthält die Navigationselemente*/}
             <Container>
+                {/*Das Logo wird in die Navigation eingebunden*/}
                 <Navbar.Brand href="/"><img src="/img/logo.svg" width="30" height="30" className="d-inline-block align-top" alt="Kleidungsstück" /> </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
+                    {/*Elemente der Navigation*/}
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="donate">Kleidung Spenden</Nav.Link>
@@ -22,4 +31,4 @@ function CollapsibleExample() {
     );
 }
 
-export default CollapsibleExample;
+export default Navigation;  
