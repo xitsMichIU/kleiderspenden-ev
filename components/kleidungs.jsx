@@ -15,7 +15,7 @@ export default function Kleidungsstück({ typ }) {
             setCount(count - 1);
         }
     };
-
+  
     return (
         <>
             <InputGroup className="mb-3">

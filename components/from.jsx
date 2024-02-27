@@ -33,6 +33,7 @@ export default function Formular() {
         setValidated(true);
     };
 
+  
     //Gibt das eigentliche Formular zurück
     return (
 
@@ -164,7 +165,6 @@ export default function Formular() {
 
                             </>
                         )
-                        console.log("Option1");
 
                         //Option für die Abgabe an der Geschäftsstelle    
                     } else if (option === "2") {
@@ -214,7 +214,7 @@ export default function Formular() {
                             </>
                         )
                     } else {
-                        console.log("Default");
+                        return null;
                     }
                 })()}
             </div>
