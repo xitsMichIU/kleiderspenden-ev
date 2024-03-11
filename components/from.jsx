@@ -18,25 +18,53 @@ export default function Formular() {
     const optionChange = (event) => {
         //Der State wird auf die Ausgewählte Option gesetzt. 
         setOption(event.target.value);
+        //Verhindert das die Evaluierung nach Formular Änderung angezeigt wird
+        setValidated(false);
     };
+
 
     //Wird benötigt um die eingegebenen Daten zu Validieren, Standardwert: false
     const [validated, setValidated] = useState(false);
 
-    //Funktion zur Validierung der Textfelder, verhindert den Submit wenn Daten fehlen
+    //Anpassung der Validerung
+    const [spendengebiet, setSpendengebiet] = useState(0);
+    const [customSelectClass, setCustomSelectClass] = useState();
+
+    const handleSelectChange = (e) => {
+        const selectedValue = e.target.value;
+        setSpendengebiet(selectedValue);
+
+        if (spendengebiet == "0") {
+            console.log("Default Spendengebiet")
+            setCustomSelectClass('custom-select is-invalid');
+        } else {
+            setCustomSelectClass('custom-select is-valid');
+            console.log("Anderes Spendengebiet")
+        }
+
+    }
+
+    //Funktion zur Validierung der Felder, verhindert den Submit wenn Daten fehlen
     const handleSubmit = (event) => {
         const form = event.currentTarget;
+
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
+
+        if (spendengebiet == "0") {
+            setCustomSelectClass('custom-select is-invalid');
+        } else {
+            setCustomSelectClass('custom-select is-valid');
+        }
+
         setValidated(true);
+
     };
 
-  
     //Gibt das eigentliche Formular zurück
     return (
-
         // Konfiguration des Formulars für die Validierung
         // noValidate: Deaktiviert die Standard-Formularvalidierung des Browsers
         // validated: Setzt den aktuellen Status der Validierungsvariable auf false 
@@ -52,12 +80,12 @@ export default function Formular() {
                 md="4": Option um die Größe des Feldes festzulegen, es werden vier Spalten verwendet
                 controlId: Eindeutige Kennung des Elements im Formular*/}
 
-                <Form.Group as={Col} md="4" controlId="donationType">
+                <Form.Group as={Col} md="4">
                     <Form.Label>Wie möchtest du Spenden?</Form.Label>
                     {/*Setzet das Value auf die Standard Methode, und Updated die Methode beim Wechsel*/}
                     {/*Feld ist nicht verpflichtend, da es zwingend ausgewählt wird*/}
                     <Form.Select value={option} onChange={optionChange}>
-                        <option>Wählen Sie die Methode der Spende</option>
+                        <option>Bitte wählen...</option>
                         <option value="1">Abholung durch Sammelfahrzeug</option>
                         <option value="2">Abgabe an der Geschäftsstelle</option>
                     </Form.Select>
@@ -77,6 +105,7 @@ export default function Formular() {
                                         <Form.Label>Vorname</Form.Label>
                                         <Form.Control required type="text" placeholder="Vorname" />
                                         {/*Nachricht wenn es zu einem Problem bei der Validerung kommt*/}
+
                                         <Form.Control.Feedback type="invalid">Bitte geben Sie ihren Vornamen ein.</Form.Control.Feedback>
                                     </Form.Group>
 
@@ -126,25 +155,20 @@ export default function Formular() {
                                 {/*Fünfte Zeile mit den gleichen Optionen*/}
                                 <Row className="mb-3">
                                     {/*Feldlänge auf vier gesetzt*/}
-                                    <Form.Group as={Col} md="4" controlId="clothes">
-                                        <Form.Label>Art der Kleidung</Form.Label>
-                                        <Kleidungsstück typ="Oberteile: " />
-                                        <Kleidungsstück typ="Unterteile: " />
-                                        <Kleidungsstück typ="Accessoires: " />
-                                        <Kleidungsstück typ="Schuhe: " />
-                                        <Form.Control.Feedback type="invalid">Art der Kleidung.</Form.Control.Feedback>
-                                    </Form.Group>
-
-                                    {/*Feldlänge auf vier gesetzt*/}
                                     <Form.Group as={Col} md="4" controlId="crisisArea">
                                         <Form.Label>Kriesengebiet</Form.Label>
-                                        <Form.Select required>
-                                            <option>Kriesengebiet</option>
+                                        <Form.Select className={customSelectClass} value={spendengebiet} onChange={handleSelectChange} >
+                                            <option value="0">Bitte Wählen</option>
                                             <option value="1">Ukraine</option>
                                             <option value="2">Israel</option>
                                             <option value="3">Malaisya</option>
                                         </Form.Select>
                                         <Form.Control.Feedback type="invalid">Bitte wählen sie ein Kriesengebiet.</Form.Control.Feedback>
+                                    </Form.Group>
+
+                                    {/*Feldlänge auf vier gesetzt*/}
+                                    <Form.Group as={Col} md="4" controlId="clothes">
+                                        <Kleidungsstück />
                                     </Form.Group>
                                 </Row>
 
@@ -174,19 +198,14 @@ export default function Formular() {
                                 <Row className="mb-3">
                                     {/*Feldlänge auf vier gesetzt*/}
                                     <Form.Group as={Col} md="4" controlId="clothes">
-                                        <Form.Label>Art der Kleidung</Form.Label>
-                                        <Kleidungsstück typ="Oberteile: " />
-                                        <Kleidungsstück typ="Unterteile: " />
-                                        <Kleidungsstück typ="Accessoires: " />
-                                        <Kleidungsstück typ="Schuhe: " />
-                                        <Form.Control.Feedback type="invalid">Art der Kleidung.</Form.Control.Feedback>
+                                        <Kleidungsstück />
                                     </Form.Group>
 
                                     {/*Feldlänge auf vier gesetzt*/}
                                     <Form.Group as={Col} md="4" controlId="crisisArea">
                                         <Form.Label>Kriesengebiet</Form.Label>
                                         <Form.Select required>
-                                            <option>Kriesengebiet</option>
+                                            <option value="0">Kriesengebiet</option>
                                             <option value="1">Ukraine</option>
                                             <option value="2">Israel</option>
                                             <option value="3">Malaisya</option>

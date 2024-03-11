@@ -1,28 +1,38 @@
-'use client'
-
 import React, { useState } from 'react';
-import { InputGroup, Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
-export default function Kleidungsstück({ typ }) {
-    const [count, setCount] = useState(0);
+//Importiert das CSS File das eigene Anpassungen enthält
+import "/Users/michaelgeigges/GitHub/kleiderspenden-ev/app/style.css"
 
-    const handleAddClick = () => {
-        setCount(count + 1);
-    };
+const Kleidungsauswahl = () => {
+    const [selectedItems, setSelectedItems] = useState([]);
+    const allItems = ['Oberteile', 'Unterteile', 'Schuhe', 'Accessories'];
 
-    const handleRemoveClick = () => {
-        if (count >= 1) {
-            setCount(count - 1);
+    const handleCheckboxChange = (item) => {
+        if (selectedItems.includes(item)) {
+            setSelectedItems(selectedItems.filter((selectedItem) => selectedItem !== item));
+        } else {
+            setSelectedItems([...selectedItems, item]);
         }
     };
-  
+
     return (
-        <>
-            <InputGroup className="mb-3">
-            <Form.Control readOnly value={`${typ} ${count}`} />
-                <Button onClick={handleAddClick} variant="success">Hinzufügen</Button>
-                <Button onClick={handleRemoveClick} variant="danger">Entfernen</Button>
-            </InputGroup>
-        </>
+        <div>
+            <Form.Group md="4">
+                <Form.Label>Art der Kleidung</Form.Label>
+                {allItems.map((item, index) => (
+                    <Form.Check
+                        key={index}
+                        type="checkbox"
+                        label={item}
+                        required
+                        checked={selectedItems.includes(item)}
+                        onChange={() => handleCheckboxChange(item)}
+                    />
+                ))}
+            </Form.Group>
+        </div>
     );
-}
+};
+
+export default Kleidungsauswahl;
