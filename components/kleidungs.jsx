@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
+import { useEffect } from 'react';
 
 //Importiert das CSS File das eigene Anpassungen enthält
 import "/Users/michaelgeigges/GitHub/kleiderspenden-ev/app/style.css"
 
-const Kleidungsauswahl = () => {
+
+
+const Kleidungsauswahl = ({ onClothesSelection }) => {
     const [selectedItems, setSelectedItems] = useState([]);
     const allItems = ['Oberteile', 'Unterteile', 'Schuhe', 'Accessories'];
 
     const handleCheckboxChange = (item) => {
-        if (selectedItems.includes(item)) {
-            setSelectedItems(selectedItems.filter((selectedItem) => selectedItem !== item));
-        } else {
-            setSelectedItems([...selectedItems, item]);
-        }
+        setSelectedItems((prevSelectedItems) => {
+            const updatedItems = prevSelectedItems.includes(item)
+                ? prevSelectedItems.filter((selectedItem) => selectedItem !== item)
+                : [...prevSelectedItems, item];
+
+
+            return updatedItems;
+        });
     };
+
+    useEffect(() => {
+        // Hier wird die Funktion onClothesSelection mit dem aktualisierten Zustand aufgerufen und ans Formular übergeben
+        onClothesSelection(selectedItems);
+    }, [selectedItems, onClothesSelection]);
 
     return (
         <div>
@@ -25,7 +36,6 @@ const Kleidungsauswahl = () => {
                         key={index}
                         type="checkbox"
                         label={item}
-                        required
                         checked={selectedItems.includes(item)}
                         onChange={() => handleCheckboxChange(item)}
                     />

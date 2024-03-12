@@ -19,201 +19,48 @@ export default function Formular() {
         //Der State wird auf die Ausgewählte Option gesetzt. 
         setOption(event.target.value);
         //Verhindert das die Evaluierung nach Formular Änderung angezeigt wird
+        setValidated(false);
     };
 
-    //Anpassung der Validerung des Spendengebietes
+
+    //Wird benötigt um die eingegebenen Daten zu Validieren, Standardwert: false
+    const [validated, setValidated] = useState(false);
+
+    //Anpassung der Validerung
     const [spendengebiet, setSpendengebiet] = useState("");
     const [customSelectClass, setCustomSelectClass] = useState();
 
     const handleSelectChange = (e) => {
         const selectedValue = e.target.value;
         setSpendengebiet(selectedValue);
+
+        if (spendengebiet == "0") {
+            console.log("Default Spendengebiet")
+            setCustomSelectClass('custom-select is-invalid');
+        } else {
+            setCustomSelectClass('custom-select is-valid');
+            console.log("Anderes Spendengebiet")
+        }
+
     }
-
-    //Anpassung der Validerung des Vornamen
-    const [vorname, setVorname] = useState("");
-    const [customSelectClassVorname, setCustomSelectClassVorname] = useState();
-
-    const handleSelectChangeVorname = (e) => {
-        const selectedValue = e.target.value;
-        setVorname(selectedValue);
-    }
-
-    //Anpassung der Validerung des Nachnamens
-    const [nachname, setNachname] = useState("");
-    const [customSelectClassNachname, setCustomSelectClassNachname] = useState();
-
-    const handleSelectChangeNachname = (e) => {
-        const selectedValue = e.target.value;
-        setNachname(selectedValue);
-    }
-
-    // Anpassung der Validierung der Straße
-    const [strasse, setStrasse] = useState("");
-    const [customSelectClassStrasse, setCustomSelectClassStrasse] = useState();
-
-    const handleSelectChangeStrasse = (e) => {
-        const selectedValue = e.target.value;
-        setStrasse(selectedValue);
-    }
-
-    // Anpassung der Validierung der Hausnummer
-    const [hausnummer, setHausnummer] = useState("");
-    const [customSelectClassHausnummer, setCustomSelectClassHausnummer] = useState();
-
-    const handleSelectChangeHausnummer = (e) => {
-        const selectedValue = e.target.value;
-        setHausnummer(selectedValue);
-    }
-
-    //Anpassung der Validerung der PLZ
-    const [plz, setPLZ] = useState("");
-    const [customSelectClassPLZ, setCustomSelectClassPLZ] = useState();
-
-    const handleSelectChangePLZ = (e) => {
-        const selectedValue = e.target.value;
-        setPLZ(selectedValue);
-    }
-
-    //Anpassung der Validerung es Ortes
-    const [ort, setOrt] = useState("");
-    const [customSelectClassOrt, setCustomSelectClassOrt] = useState();
-
-    const handleSelectChangeOrt = (e) => {
-        const selectedValue = e.target.value;
-        setOrt(selectedValue);
-    }
-
-    //Anpassung der Validerung es Ortes
-    const [agb, setAGB] = useState(false);
-    const [customSelectClassAGB, setCustomSelectClassAGB] = useState();
-
-    const handleSelectChangeAGB = (e) => {
-        const selectedValue = e.target.checked;
-        setAGB(selectedValue);
-    }
-
-    //Anpassung der Validerung es der Kleidercheckbox
-    const [selectedClothes, setSelectedClothes] = useState([]);
-
-    const handleClothesSelection = (selectedItems) => {
-        setSelectedClothes(selectedItems);
-    };
-
-    //Anpassung der Validerung des Kleiderauswahl Checkbox
-    const [customSelectClassClothesCount, setCustomSelectClassClothesCount] = useState();
 
     //Funktion zur Validierung der Felder, verhindert den Submit wenn Daten fehlen
     const handleSubmit = (event) => {
+        const form = event.currentTarget;
 
-        let allesOK = true;
-
-        if (option === "1") {
-
-            if (spendengebiet === "") {
-                setCustomSelectClass('custom-select is-invalid');
-                allesOK = false;
-            } else if (spendengebiet === "0") {
-                setCustomSelectClass('custom-select is-invalid');
-                allesOK = false;
-            }
-            else {
-                setCustomSelectClass('custom-select is-valid');
-            }
-
-            if (vorname === "") {
-                setCustomSelectClassVorname('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassVorname('custom-select is-valid');
-            }
-
-            if (nachname === "") {
-                setCustomSelectClassNachname('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassNachname('custom-select is-valid');
-            }
-
-            if (strasse === "") {
-                setCustomSelectClassStrasse('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassStrasse('custom-select is-valid');
-            }
-
-            if (hausnummer === "") {
-                setCustomSelectClassHausnummer('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassHausnummer('custom-select is-valid');
-            }
-
-            if (plz === "") {
-                setCustomSelectClassPLZ('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassPLZ('custom-select is-valid');
-            }
-
-            if (ort === "") {
-                setCustomSelectClassOrt('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassOrt('custom-select is-valid');
-            }
-
-            if (agb === false) {
-                setCustomSelectClassAGB('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassAGB('custom-select is-valid');
-            }
-
-            if (selectedClothes.length == 0) {
-                setCustomSelectClassClothesCount('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassClothesCount('custom-select is-valid');
-            }
-
-            if (!allesOK) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-
-        } else if (option === "2") {
-
-            if (spendengebiet === "") {
-                setCustomSelectClass('custom-select is-invalid');
-                allesOK = false;
-            } else if (spendengebiet === "0") {
-                setCustomSelectClass('custom-select is-invalid');
-                allesOK = false;
-            }
-            else {
-                setCustomSelectClass('custom-select is-valid');
-            }
-
-            if (selectedClothes.length == 0) {
-                setCustomSelectClassClothesCount('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassClothesCount('custom-select is-valid');
-            }
-
-            if (agb === false) {
-                setCustomSelectClassAGB('custom-select is-invalid');
-                allesOK = false;
-            } else {
-                setCustomSelectClassAGB('custom-select is-valid');
-            }
-
-            if (!allesOK) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
         }
+
+        if (spendengebiet == "0") {
+            setCustomSelectClass('custom-select is-invalid');
+        } else {
+            setCustomSelectClass('custom-select is-valid');
+        }
+
+        setValidated(true);
+
     };
 
     //Gibt das eigentliche Formular zurück
@@ -222,7 +69,7 @@ export default function Formular() {
         // noValidate: Deaktiviert die Standard-Formularvalidierung des Browsers
         // validated: Setzt den aktuellen Status der Validierungsvariable auf false 
         // onSubmit: Die Funktion zur Validierung wird aufgerufen
-        <Form noValidate onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
 
             {/*Erste Reihe des Formulars zur Festlegung der Methode*/}
             <Row className="mb-3">
@@ -256,7 +103,7 @@ export default function Formular() {
                                 <Row className="mb-3">
                                     <Form.Group as={Col} md="4" controlId="firstName">
                                         <Form.Label>Vorname</Form.Label>
-                                        <Form.Control className={customSelectClassVorname} value={vorname} onChange={handleSelectChangeVorname} type="text" placeholder="Vorname" />
+                                        <Form.Control required type="text" placeholder="Vorname" />
                                         {/*Nachricht wenn es zu einem Problem bei der Validerung kommt*/}
 
                                         <Form.Control.Feedback type="invalid">Bitte geben Sie ihren Vornamen ein.</Form.Control.Feedback>
@@ -264,7 +111,7 @@ export default function Formular() {
 
                                     <Form.Group as={Col} md="4" controlId="lastName">
                                         <Form.Label>Nachname</Form.Label>
-                                        <Form.Control className={customSelectClassNachname} value={nachname} onChange={handleSelectChangeNachname} type="text" placeholder="Nachname" />
+                                        <Form.Control required type="text" placeholder="Nachname" />
                                         {/*Nachricht wenn es zu einem Problem bei der Validerung kommt*/}
                                         <Form.Control.Feedback type="invalid">Bitte geben Sie ihren Nachnamen ein.</Form.Control.Feedback>
                                     </Form.Group>
@@ -275,13 +122,14 @@ export default function Formular() {
                                     {/*Feldlänge auf fünf gesetzt*/}
                                     <Form.Group as={Col} md="5" controlId="street">
                                         <Form.Label>Straße</Form.Label>
-                                        <Form.Control className={customSelectClassStrasse} value={strasse} onChange={handleSelectChangeStrasse} type="text" placeholder="Straße" />
+                                        <Form.Control type="text" placeholder="Straße" required />
                                         <Form.Control.Feedback type="invalid">Bitte geben Sie ihre Straße ein.</Form.Control.Feedback>
                                     </Form.Group>
+
                                     {/*Feldlänge auf 3 gesetzt, so bleibt die summe bei acht*/}
                                     <Form.Group as={Col} md="3" controlId="number">
                                         <Form.Label>Hausnummer</Form.Label>
-                                        <Form.Control className={customSelectClassHausnummer} value={hausnummer} onChange={handleSelectChangeHausnummer} type="text" placeholder="Hausnummer" />
+                                        <Form.Control type="text" placeholder="Hausnummer" required />
                                         <Form.Control.Feedback type="invalid"> Bitte geben sie ihre Hausnummer ein.</Form.Control.Feedback>
                                     </Form.Group>
                                 </Row>
@@ -292,14 +140,14 @@ export default function Formular() {
                                     <Form.Group as={Col} md="2" controlId="plz">
                                         <Form.Label>Postleitzahl</Form.Label>
                                         {/*Es können durch eine REGEX nur Postleitzahlen die mit 78 Beginnen eingegeben werden*/}
-                                        <Form.Control className={customSelectClassPLZ} value={plz} onChange={handleSelectChangePLZ} type="text" placeholder="PLZ" pattern="^78.*$" />
+                                        <Form.Control type="text" placeholder="PLZ" pattern="^78.*$" required />
                                         <Form.Control.Feedback type="invalid">Adresse zu weit weg</Form.Control.Feedback>
                                     </Form.Group>
 
                                     {/*Feldlänge auf sechs gesetzt, sobleibt die summe bei acht*/}
                                     <Form.Group as={Col} md="6" controlId="location">
                                         <Form.Label>Ort</Form.Label>
-                                        <Form.Control className={customSelectClassOrt} value={ort} onChange={handleSelectChangeOrt} type="text" placeholder="Ort" />
+                                        <Form.Control type="text" placeholder="Ort" required />
                                         <Form.Control.Feedback type="invalid">Bitte geben ihren Ort ein.</Form.Control.Feedback>
                                     </Form.Group>
                                 </Row>
@@ -320,11 +168,7 @@ export default function Formular() {
 
                                     {/*Feldlänge auf vier gesetzt*/}
                                     <Form.Group as={Col} md="4" controlId="clothes">
-                                        <Kleidungsstück onClothesSelection={handleClothesSelection} />
-                                        {/*Read only Feld das den Akutellen Wert der Ausgewählten Kleider Enthält*/}
-                                        {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
-                                        <Form.Control style={{ display: 'none' }} className={customSelectClassClothesCount} value={selectedClothes.length} readOnly />
-                                        <Form.Control.Feedback type="invalid">Wählen sie mindestens eins aus</Form.Control.Feedback>
+                                        <Kleidungsstück />
                                     </Form.Group>
                                 </Row>
 
@@ -332,12 +176,17 @@ export default function Formular() {
                                 <Row className="mb-3">
                                     {/*Checkbox für AGBS / Datenschutzerklärung*/}
                                     <Form.Group>
-                                        <Form.Check label="Ich habe die AGBs gelsen" className={customSelectClassAGB} value={agb} onChange={handleSelectChangeAGB} />
-                                        <Form.Control.Feedback type="invalid">"Bitte stimmen Sie der Datenverarbeitung zu"</Form.Control.Feedback>
+                                        <Form.Check
+                                            required
+                                            label="Ich habe die AGBs gelsen"
+                                            feedback="Bitte stimmen Sie der Datenverarbeitung zu"
+                                            feedbackType="invalid"
+                                        />
                                     </Form.Group>
                                 </Row>
                                 {/*Button um das Formular abzusenden*/}
                                 <Button className="mb-3" type="submit">Spende Registrieren</Button>
+
                             </>
                         )
 
@@ -345,13 +194,18 @@ export default function Formular() {
                     } else if (option === "2") {
                         return (
                             <>
-                                {/*Fünfte Zeile mit den gleichen Optionen*/}
+                                {/*Zweite Zeile mit den gleichen Optionen*/}
                                 <Row className="mb-3">
+                                    {/*Feldlänge auf vier gesetzt*/}
+                                    <Form.Group as={Col} md="4" controlId="clothes">
+                                        <Kleidungsstück />
+                                    </Form.Group>
+
                                     {/*Feldlänge auf vier gesetzt*/}
                                     <Form.Group as={Col} md="4" controlId="crisisArea">
                                         <Form.Label>Kriesengebiet</Form.Label>
-                                        <Form.Select className={customSelectClass} value={spendengebiet} onChange={handleSelectChange} >
-                                            <option value="0">Bitte Wählen</option>
+                                        <Form.Select required>
+                                            <option value="0">Kriesengebiet</option>
                                             <option value="1">Ukraine</option>
                                             <option value="2">Israel</option>
                                             <option value="3">Malaisya</option>
@@ -359,25 +213,21 @@ export default function Formular() {
                                         <Form.Control.Feedback type="invalid">Bitte wählen sie ein Kriesengebiet.</Form.Control.Feedback>
                                     </Form.Group>
 
-                                    {/*Feldlänge auf vier gesetzt*/}
-                                    <Form.Group as={Col} md="4" controlId="clothes">
-                                        <Kleidungsstück onClothesSelection={handleClothesSelection} />
-                                        {/*Read only Feld das den Akutellen Wert der Ausgewählten Kleider Enthält*/}
-                                        {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
-                                        <Form.Control style={{ display: 'none' }} className={customSelectClassClothesCount} value={selectedClothes.length} readOnly />
-                                        <Form.Control.Feedback type="invalid">Wählen sie mindestens eins aus</Form.Control.Feedback>
-                                    </Form.Group>
                                 </Row>
 
                                 {/*Dritte Zeile mit den gleichen Optionen*/}
                                 <Row className="mb-3">
                                     {/*Checkbox für AGBS / Datenschutzerklärung*/}
                                     <Form.Group>
-                                        <Form.Check label="Ich habe die AGBs gelsen" className={customSelectClassAGB} value={agb} onChange={handleSelectChangeAGB} />
-                                        <Form.Control.Feedback type="invalid">"Bitte stimmen Sie der Datenverarbeitung zu"</Form.Control.Feedback>
+                                        <Form.Check
+                                            required
+                                            label="Ich habe die AGBs gelsen"
+                                            feedback="Bitte stimmen Sie der Datenverarbeitung zu"
+                                            feedbackType="invalid"
+                                        />
                                     </Form.Group>
-                                </Row>
 
+                                </Row>
                                 {/*Button um das Formular abzusenden*/}
                                 <Button className="mb-3" type="submit">Spende Registrieren</Button>
                             </>
