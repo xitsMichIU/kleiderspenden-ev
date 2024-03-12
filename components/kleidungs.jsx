@@ -5,8 +5,6 @@ import { useEffect } from 'react';
 //Importiert das CSS File das eigene Anpassungen enthält
 import "/Users/michaelgeigges/GitHub/kleiderspenden-ev/app/style.css"
 
-
-
 const Kleidungsauswahl = ({ onClothesSelection }) => {
     const [selectedItems, setSelectedItems] = useState([]);
     const allItems = ['Oberteile', 'Unterteile', 'Schuhe', 'Accessories'];
@@ -16,8 +14,6 @@ const Kleidungsauswahl = ({ onClothesSelection }) => {
             const updatedItems = prevSelectedItems.includes(item)
                 ? prevSelectedItems.filter((selectedItem) => selectedItem !== item)
                 : [...prevSelectedItems, item];
-
-
             return updatedItems;
         });
     };
