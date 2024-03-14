@@ -3,13 +3,16 @@
 
 //Import der benötigten React Methoden
 import { useState } from 'react';
+import React from 'react';
 
 //Import der benötigten React-Bootstrap Methoden
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Kleidungsstück from './kleidungs';
+import Kleidungsstück from './kleidungswahl';
+import Alert from 'react-bootstrap/Alert';
+
 
 //Formular für das Registieren einer Kleiderspende
 export default function Formular() {
@@ -140,8 +143,8 @@ export default function Formular() {
     //Funktion zur Validierung der Formulardaten. Es muss muss sichergestellt werden, dass alle wichtigen Angaben gemacht wurden.
     const handleSubmit = (event) => {
 
-        //Variable noError dient zur feststellung, ob bei einem der Felder Daten fehlen. Wenn ja wird ein "Submit" verhindert
-        let noError = true;
+        //Variable Error dient zur feststellung, ob bei einem der Felder Daten fehlen. Wenn ja wird ein "Submit" verhindert
+        let error = false;
 
         //Validierung der Felder wenn die Abholmethode 1 (Abholung durch Sammelfahrzeug) ausgewählt wurde
         if (abholmethode === "1") {
@@ -150,10 +153,10 @@ export default function Formular() {
             //Wenn der Wert leer ist, oder eine 0 enthält soll ein Fehler angezeigt werden.
             if (spendengebiet === "") {
                 setCustomValidationSpendengebiet('custom-select is-invalid');
-                noError = false;
+                error = true;
             } else if (spendengebiet === "0") {
                 setCustomValidationSpendengebiet('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else {
@@ -164,7 +167,7 @@ export default function Formular() {
             //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (vorname === "") {
                 setCustomValidationVorname('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else {
@@ -175,7 +178,7 @@ export default function Formular() {
             //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (nachname === "") {
                 setCustomValidationNachname('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else {
@@ -186,7 +189,7 @@ export default function Formular() {
             //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (strasse === "") {
                 setCustomValidationStrasse('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else {
@@ -197,7 +200,7 @@ export default function Formular() {
             //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (hausnummer === "") {
                 setCustomValidationHausnummer('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else {
@@ -208,12 +211,11 @@ export default function Formular() {
             //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (plz === "") {
                 setCustomValidationPLZ('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else if (plz !== "") {
 
-                console.log(plz)
                 // Überprüfe, ob der Text mit "78" beginnt
                 const beginntMit78 = plz.startsWith("78");
 
@@ -228,10 +230,10 @@ export default function Formular() {
 
                 // Gib false zurück, wenn eine der Bedingungen verletzt wurde
                 if (beginntMit78 && nichtLaengerAls5 && nichtKleinerAls5 && nurZahlen1Bis9) {
-                    console.log("Gültige PLZ")
                     setCustomValidationPLZ('custom-select is-valid');
                 } else {
                     setCustomValidationPLZ('custom-select is-invalid');
+                    error = true;
                 }
             }
 
@@ -239,7 +241,7 @@ export default function Formular() {
             //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (ort === "") {
                 setCustomValidationOrt('custom-select is-invalid');
-                noError = false;
+                error = true;
             } else {
                 setCustomValidationOrt('custom-select is-valid');
             }
@@ -248,7 +250,7 @@ export default function Formular() {
             //Wenn der Wert false ist soll ein Fehler angezeigt werden.
             if (agb === false) {
                 setCustomValidationAGB('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else {
@@ -259,7 +261,7 @@ export default function Formular() {
             //Wenn die Länge des Arrays 0 ist, soll ein Fehler angezeigt werden. Ein leeres Array bedeutet es wurde keine Kleidung ausgewählt.
             if (selectedClothes.length == 0) {
                 setCustomValidationClothesCount('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else {
@@ -267,12 +269,15 @@ export default function Formular() {
             }
 
             //Wurde kein Error gefunden, wird das Formular abgesendet
-            if (!noError) {
+            console.log(error);
+            if (error) {
                 event.preventDefault();
                 event.stopPropagation();
+            } else {
+                alert("Formular erfolgreich abgeschikt")
             }
-
         }
+
         //Validerung der Felder wenn die Abholmethode den Wert 2 hat (Abgabe an Geschäftsstelle)
         else if (abholmethode === "2") {
 
@@ -280,10 +285,10 @@ export default function Formular() {
             //Wenn der Wert leer oder 0 ist soll ein Fehler angezeigt werden.
             if (spendengebiet === "") {
                 setCustomValidationSpendengebiet('custom-select is-invalid');
-                noError = false;
+                error = true;
             } else if (spendengebiet === "0") {
                 setCustomValidationSpendengebiet('custom-select is-invalid');
-                noError = false;
+                error = true;
             }
             else {
                 setCustomValidationSpendengebiet('custom-select is-valid');
@@ -293,7 +298,7 @@ export default function Formular() {
             //Wenn die Länge des Arrays 0 ist, soll ein Fehler angezeigt werden. Ein leeres Array bedeutet es wurde keine Kleidung ausgewählt.
             if (selectedClothes.length == 0) {
                 setCustomValidationClothesCount('custom-select is-invalid');
-                noError = false;
+                error = true;
             } else {
                 setCustomValidationClothesCount('custom-select is-valid');
             }
@@ -302,16 +307,21 @@ export default function Formular() {
             //Wenn der Wert false ist soll ein Fehler angezeigt werden.
             if (agb === false) {
                 setCustomValidationAGB('custom-select is-invalid');
-                noError = false;
+                error = true;
             } else {
                 setCustomValidationAGB('custom-select is-valid');
             }
 
-            //Wurde kein Error gefunden, wird das Formular abgesendet
-            if (!noError) {
+            //Wurde ein fehler gefunden wird, wird das Formular nicht abgesendet
+            // Wurde ein Fehler gefunden, wird das Formular nicht abgesendet
+            if (error) {
+                alert("Ein Fehler wurde gefunden!");
                 event.preventDefault();
                 event.stopPropagation();
+            } else {
+
             }
+
         }
     };
 
@@ -329,7 +339,7 @@ export default function Formular() {
                 {/* as={Col}: Legt fest, dass es sich um eine Spalte handelt */}
                 {/* md="4": Option um die Größe des Feldes festzulegen, es werden vier Spalten verwendet */}
                 {/* controlId: Eindeutige Kennung des Elements im Formular */}
-                <Form.Group as={Col} md="4">
+                <Form.Group as={Col} md="4" controlId="abholmethode">
                     <Form.Label>Wie möchtest du Spenden?</Form.Label>
                     <Form.Select value={abholmethode} onChange={handleSelectChangeAbholmethode}>
                         <option>Bitte wählen...</option>
@@ -349,7 +359,7 @@ export default function Formular() {
                                 {/*Zweite Zeile*/}
                                 <Row className="mb-3">
                                     {/*Spalte: Vorname*/}
-                                    <Form.Group as={Col} md="4" controlId="firstName">
+                                    <Form.Group as={Col} md="4" controlId="vorname">
                                         <Form.Label>Vorname</Form.Label>
                                         <Form.Control className={customValidationVorname} value={vorname} onChange={handleTextChangeVorname} type="text" placeholder="Vorname" />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
@@ -357,7 +367,7 @@ export default function Formular() {
                                     </Form.Group>
 
                                     {/*Spalte: Nachname*/}
-                                    <Form.Group as={Col} md="4" controlId="lastName">
+                                    <Form.Group as={Col} md="4" controlId="nachname">
                                         <Form.Label>Nachname</Form.Label>
                                         <Form.Control className={customValidationNachname} value={nachname} onChange={handleTextChangeNachname} type="text" placeholder="Nachname" />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
@@ -368,7 +378,7 @@ export default function Formular() {
                                 {/*Dritte Zeile*/}
                                 <Row className="mb-3">
                                     {/*Spalte: Straße*/}
-                                    <Form.Group as={Col} md="5" controlId="street">
+                                    <Form.Group as={Col} md="5" controlId="strasse">
                                         <Form.Label>Straße</Form.Label>
                                         <Form.Control className={customValidationStrasse} value={strasse} onChange={handleTextChangeStrasse} type="text" placeholder="Straße" />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
@@ -376,7 +386,7 @@ export default function Formular() {
                                     </Form.Group>
 
                                     {/*Spalte: Hausnummer*/}
-                                    <Form.Group as={Col} md="3" controlId="number">
+                                    <Form.Group as={Col} md="3" controlId="hausnummer">
                                         <Form.Label>Hausnummer</Form.Label>
                                         <Form.Control className={customValidationHausnummer} value={hausnummer} onChange={handleTextChangeHausnummer} type="text" placeholder="Hausnummer" />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
@@ -395,7 +405,7 @@ export default function Formular() {
                                     </Form.Group>
 
                                     {/*Spalte: Ort*/}
-                                    <Form.Group as={Col} md="6" controlId="location">
+                                    <Form.Group as={Col} md="6" controlId="ort">
                                         <Form.Label>Ort</Form.Label>
                                         <Form.Control className={customValidationOrt} value={ort} onChange={handleTextChangeOrt} type="text" placeholder="Ort" />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
@@ -406,7 +416,7 @@ export default function Formular() {
                                 {/*Fünfte Zeile*/}
                                 <Row className="mb-3">
                                     {/*Spalte: Kriesengebiet*/}
-                                    <Form.Group as={Col} md="4" controlId="crisisArea">
+                                    <Form.Group as={Col} md="4" controlId="spendengebiet1">
                                         <Form.Label>Kriesengebiet</Form.Label>
                                         <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
                                             <option value="0">Bitte Wählen</option>
@@ -419,7 +429,7 @@ export default function Formular() {
                                     </Form.Group>
 
                                     {/*Spalte: Kleidungsstück*/}
-                                    <Form.Group as={Col} md="4" controlId="clothes">
+                                    <Form.Group as={Col} md="4" controlId="kleidungsauswahl1">
                                         <Kleidungsstück onClothesSelection={handleClothesSelection} />
                                         {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
                                         {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
@@ -432,7 +442,7 @@ export default function Formular() {
                                 {/*Sechste Zeile*/}
                                 <Row className="mb-3">
                                     {/*Spalte: AGBs*/}
-                                    <Form.Group>
+                                    <Form.Group controlId="agb1">
                                         <Form.Check label="Ich habe die AGBs gelsen" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                         <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
@@ -452,7 +462,7 @@ export default function Formular() {
                                 {/*Zweite Zeile*/}
                                 <Row className="mb-3">
                                     {/*Spalte: Kriesengebiet*/}
-                                    <Form.Group as={Col} md="4" controlId="crisisArea">
+                                    <Form.Group as={Col} md="4" controlId="spendengebiet2">
                                         <Form.Label>Kriesengebiet</Form.Label>
                                         <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
                                             <option value="0">Bitte Wählen</option>
@@ -465,7 +475,7 @@ export default function Formular() {
                                     </Form.Group>
 
                                     {/*Spalte: Kleidungsstück*/}
-                                    <Form.Group as={Col} md="4" controlId="clothes">
+                                    <Form.Group as={Col} md="4" controlId="kleidungsauswahl2">
                                         <Kleidungsstück onClothesSelection={handleClothesSelection} />
                                         {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
                                         {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
@@ -477,7 +487,7 @@ export default function Formular() {
                                 {/*Dritte Zeile*/}
                                 <Row className="mb-3">
                                     {/*Spalte: AGBS*/}
-                                    <Form.Group>
+                                    <Form.Group controlId="agb2">
                                         <Form.Check label="Ich habe die AGBs gelsen" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen</Form.Control.Feedback>
                                         <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
@@ -495,5 +505,21 @@ export default function Formular() {
                 })()}
             </div>
         </Form >
+    );
+}
+
+function SpendenInformationen({ vorname, nachname, strasse, hausnummer, plz, ort, spendengebiet, selectedClothes }) {
+    return (
+        <Alert variant="info">
+            <Alert.Heading>Spendeninformationen</Alert.Heading>
+            <p>Vorname: {vorname}</p>
+            <p>Nachname: {nachname}</p>
+            <p>Straße: {strasse}</p>
+            <p>Hausnummer: {hausnummer}</p>
+            <p>PLZ: {plz}</p>
+            <p>Ort: {ort}</p>
+            <p>Spendengebiet: {spendengebiet}</p>
+            <p>Ausgewählte Kleidungsstücke: {selectedClothes.join(', ')}</p>
+        </Alert>
     );
 }
