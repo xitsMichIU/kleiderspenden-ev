@@ -6,7 +6,7 @@ function Footer() {
     return (
         <>
             {/*Enthält die Navigationselemente*/}
-            <ul id="footer" className="nav justify-content-center sticky-bottom">
+            <ul id="footer" className="nav justify-content-center fixed-bottom">
                 <li className="nav-item">
                     <a className="nav-link" href="/legal">Impressum</a>
                 </li>

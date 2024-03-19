@@ -4,7 +4,9 @@
 //Import der benötigten React Methoden
 import { useState } from 'react';
 import React from 'react';
-import { useRouter } from 'next/navigation'
+import Link from 'next/link';
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 
 //Import der benötigten React-Bootstrap Methoden
 import Button from 'react-bootstrap/Button';
@@ -13,7 +15,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Kleidungsstück from './kleidungswahl';
 import Alert from 'react-bootstrap/Alert';
-
 
 //Formular für das Registieren einer Kleiderspende
 export default function Formular() {
@@ -37,7 +38,21 @@ export default function Formular() {
         setCustomValidationOrt('custom-select');
         setCustomValidationAGB('custom-select');
         setCustomValidationClothesCount('custom-select');
+        setCustomValidationAnrede('custom-select');
     };
+
+    //Auswahl des Spendengebietes, default Wert wird auf "" für "Bitte wählen" festgelegt
+    const [andrede, setAnrede] = useState("");
+
+    //Konfiguration für die spätere Gültigkeitsprüfung. Ist der Wert in der Variable "Anrede" ungültig wird eine Warnung angezeigt.
+    //Der Standardwert ist leer, das bedeutet, das keine Warnung angezeigt wird beim öffnen des Formulars.
+    const [customValidationAnrede, setCustomValidationAnrede] = useState();
+
+    //Methode die aufgerufen wird, wenn das gewählte Kriesengebiet geändert wird.
+    const handleSelectChangeAnrede = (e) => {
+        //Anpassung der Variable "spendengebiet" mit dem akutellen Wert
+        setAnrede(e.target.value);
+    }
 
     //Auswahl des Spendengebietes, default Wert wird auf "" für "Bitte wählen" festgelegt
     const [spendengebiet, setSpendengebiet] = useState("");
@@ -141,6 +156,9 @@ export default function Formular() {
         setSelectedClothes(selectedItems);
     };
 
+    //Routers
+    const router = useRouter();
+
     //Funktion zur Validierung der Formulardaten. Es muss muss sichergestellt werden, dass alle wichtigen Angaben gemacht wurden.
     const handleSubmit = (event) => {
 
@@ -162,6 +180,21 @@ export default function Formular() {
             //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
             else {
                 setCustomValidationSpendengebiet('custom-select is-valid');
+            }
+
+            //Validerung des Feldes Anrede
+            console.log(andrede)
+            //Wenn der Wert leer ist, oder eine 0 enthält soll ein Fehler angezeigt werden.
+            if (andrede === "") {
+                setCustomValidationAnrede('custom-select is-invalid');
+                error = true;
+            } else if (andrede === "0") {
+                setCustomValidationAnrede('custom-select is-invalid');
+                error = true;
+            }
+            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
+            else {
+                setCustomValidationAnrede('custom-select is-valid');
             }
 
             //Validerung des Feldes vorname
@@ -271,10 +304,36 @@ export default function Formular() {
 
             //Wurde kein Error gefunden, wird das Formular abgesendet
             if (error) {
+                //Verhinden das Formular neu geladen wird
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-                alert("Formular erfolgreich abgeschickt");
+                //Verhinden das Formular neu geladen wird
+                event.preventDefault();
+                //URL die die Variablen als Parameter enthält
+
+                let spendengebietText = "";
+
+                if (spendengebiet == 1) {
+                    spendengebietText = "Ukraine"
+                } else if (spendengebiet == 2) {
+                    spendengebietText = "Israel"
+                } else if (spendengebiet == 3) {
+                    spendengebietText = "Malaysia"
+                }
+
+                let anredeText = "";
+
+                if (andrede == 1) {
+                    anredeText = "Herr"
+                } else if (andrede == 2) {
+                    anredeText = "Frau"
+                } else if (andrede == 3) {
+                    anredeText = "Divers"
+                }
+
+                const url = `/donate/summary?&anrede=${anredeText}&vorname=${vorname}&nachname=${nachname}&strasse=${strasse}&hausnummer=${hausnummer}&plz=${plz}&ort=${ort}&spendegebiet=${spendengebietText}&kleidung=${selectedClothes}&abholmethode=${abholmethode}`;
+                router.push(url);
             }
         }
 
@@ -320,6 +379,18 @@ export default function Formular() {
                 event.stopPropagation();
             } else {
 
+                let spendengebietText = "";
+
+                if (spendengebiet == 1) {
+                    spendengebietText = "Ukraine"
+                } else if (spendengebiet == 2) {
+                    spendengebietText = "Israel"
+                } else if (spendengebiet == 3) {
+                    spendengebietText = "Malaysia"
+                }
+                event.preventDefault();
+                const url = `/donate/summary?&spendegebiet=${spendengebietText}&kleidung=${selectedClothes}&abholmethode=${abholmethode}`;
+                router.push(url);
             }
 
         }
@@ -339,6 +410,7 @@ export default function Formular() {
                 {/* as={Col}: Legt fest, dass es sich um eine Spalte handelt */}
                 {/* md="4": Option um die Größe des Feldes festzulegen, es werden vier Spalten verwendet */}
                 {/* controlId: Eindeutige Kennung des Elements im Formular */}
+
                 <Form.Group as={Col} md="4" controlId="abholmethode">
                     <Form.Label>Wie möchtest du Spenden?</Form.Label>
                     <Form.Select value={abholmethode} onChange={handleSelectChangeAbholmethode}>
@@ -358,8 +430,21 @@ export default function Formular() {
                             <>
                                 {/*Zweite Zeile*/}
                                 <Row className="mb-3">
+                                    {/*Spalte: Anrede*/}
+                                    <Form.Group as={Col} md="2" controlId="geschlecht">
+                                        <Form.Label>Andrede</Form.Label>
+                                        <Form.Select className={customValidationAnrede} value={andrede} onChange={handleSelectChangeAnrede}>
+                                            <option value="0">Bitte Wählen</option>
+                                            <option value="1">Herr</option>
+                                            <option value="2">Frau</option>
+                                            <option value="3">Divers</option>
+                                        </Form.Select>
+                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                    </Form.Group>
+
                                     {/*Spalte: Vorname*/}
-                                    <Form.Group as={Col} md="4" controlId="vorname">
+                                    <Form.Group as={Col} md="3" controlId="vorname">
                                         <Form.Label>Vorname</Form.Label>
                                         <Form.Control className={customValidationVorname} value={vorname} onChange={handleTextChangeVorname} type="text" placeholder="Vorname" />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
@@ -367,7 +452,7 @@ export default function Formular() {
                                     </Form.Group>
 
                                     {/*Spalte: Nachname*/}
-                                    <Form.Group as={Col} md="4" controlId="nachname">
+                                    <Form.Group as={Col} md="3" controlId="nachname">
                                         <Form.Label>Nachname</Form.Label>
                                         <Form.Control className={customValidationNachname} value={nachname} onChange={handleTextChangeNachname} type="text" placeholder="Nachname" />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
@@ -450,7 +535,12 @@ export default function Formular() {
                                 </Row>
 
                                 {/*Button um das Formular abzusenden*/}
-                                <Button className="mb-3" type="submit">Abholung Beauftragen</Button>
+
+                                <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+
+
+                                <Button type="submit" className="mb-3">Spende Abgeben </Button>
+
                             </>
                         )
 
@@ -495,8 +585,8 @@ export default function Formular() {
                                 </Row>
 
                                 {/*Button um das Formular abzusenden*/}
-                                <Button className="mb-3" type="submit">Spende Abgeben</Button>
                                 <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                <Button type="submit" className="mb-3">Spende Abgeben </Button>
                             </>
                         )
                     } else {

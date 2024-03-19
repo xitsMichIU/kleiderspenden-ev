@@ -1,12 +1,11 @@
 main {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    margin-top: 0.1em;
+    
+    padding-bottom: 1.8em;
 }
 
 #navigation {
     background-color: #e3f2fd;
-}
+}f
 
 #formularRahmen {
     padding: 1.0em;
@@ -18,4 +17,3 @@ main {
 #footer {
     background-color: #e3f2fd;
 }
-
