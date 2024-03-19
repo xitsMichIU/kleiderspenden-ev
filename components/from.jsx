@@ -4,6 +4,7 @@
 //Import der benötigten React Methoden
 import { useState } from 'react';
 import React from 'react';
+import { useRouter } from 'next/navigation'
 
 //Import der benötigten React-Bootstrap Methoden
 import Button from 'react-bootstrap/Button';
@@ -269,12 +270,11 @@ export default function Formular() {
             }
 
             //Wurde kein Error gefunden, wird das Formular abgesendet
-            console.log(error);
             if (error) {
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-                alert("Formular erfolgreich abgeschikt")
+                alert("Formular erfolgreich abgeschickt");
             }
         }
 
