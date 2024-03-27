@@ -9,8 +9,10 @@ import "/app/style.css";
 
 export default function Test() {
 
-    let anrede, vorname, nachname, strasse, hausnummer, plz, ort, spendegebiet, kleidung, abholmethode;
+    let anrede, vorname, nachname, strasse, hausnummer, plz, ort, spendegebiet, kleidung, abholmethode, email, phone;
     const searchParams = useSearchParams();
+
+    const [currentDateTime] = useState(new Date());
 
     // Variablen innerhalb des Blocks initialisieren, um den "scope" nicht zu verlassen
 
@@ -26,35 +28,57 @@ export default function Test() {
     kleidung = searchParams.get("kleidung");
     spendegebiet = searchParams.get("spendegebiet");
     kleidung = searchParams.get("kleidung");
+    email = searchParams.get("email");
+    phone = searchParams.get("phone");
 
     return (
         <>
             {abholmethode === "1" ? (
-                <div className="pickup-success">
-                    <h2>Abholung erfolgreich beauftragt!</h2>
+                <div>
+                    <h1>Abholung erfolgreich beauftragt!</h1>
                     <p>Vielen Dank, {anrede} {nachname}!</p>
-                    <p>Wir sehen uns Morgen zur Abholung!</p>
+                    <p>Wir sehen uns bei der Abholung!</p>
                     <Row>
-                        <Col className="mb-3">
-                            <h3><strong>Angaben im Überblick:</strong></h3>
-                            <p><strong>Anrede:</strong> {anrede}</p>
-                            <p><strong>Name:</strong> {vorname} {nachname}</p>
-                            <p><strong>Adresse:</strong> {strasse} {hausnummer}, {plz} {ort}</p>
-                            <p><strong>Spendengebiet:</strong> {spendegebiet}</p>
-                            <p><strong>Kleidung:</strong> {kleidung}</p>
-                            <DateTimeComponent />
+                        <Col>
+                            <h3>Persönliche Angaben im Überblick:</h3>
+                            <ul>
+                                <li><strong>Anrede:</strong> {anrede}</li>
+                                <li><strong>Name:</strong> {vorname} {nachname}</li>
+                                <li><strong>Adresse:</strong> {strasse} {hausnummer}, {plz} {ort}</li>
+                                <li><strong>Email Adresse:</strong> {email}</li>
+                                <li><strong>Telefonnummer:</strong> {phone}</li>
+                            </ul>
+
+                            <h3>Spenden Details:</h3>
+                            <ul>
+                                <li><strong>Spendengebiet:</strong> {spendegebiet}</li>
+                                <li><strong>Gespendete Kleidung:</strong> {kleidung}</li>
+                                <li><strong>Datum und Uhrzeit:</strong> {currentDateTime.toLocaleString()}</li>
+                            </ul>
                         </Col>
                     </Row>
                 </div>
             ) : (
                 abholmethode === "2" ? (
-                    <div className="donation-success">
-                        <h2>Vielen Dank für deine Spende!</h2>
+                    <div>
+                        <h1>Abgabe erfolgreich!</h1>
+                        <p>Vielen Dank, {anrede} {nachname}!</p>
                         <Row>
                             <Col>
-                                <p><strong>Spendengebiet:</strong> {spendegebiet}</p>
-                                <p><strong>Kleidung:</strong> {kleidung}</p>
-                                <p><strong>Datum und Uhrzeit:</strong> <DateTimeComponent /></p>
+                                <h3>Persönliche Angaben im Überblick:</h3>
+                                <ul>
+                                    <li><strong>Anrede:</strong> {anrede}</li>
+                                    <li><strong>Name:</strong> {vorname} {nachname}</li>
+                                    <li><strong>Email Adresse:</strong> {email}</li>
+                                    <li><strong>Telefonnummer:</strong> {phone}</li>
+                                </ul>
+
+                                <h3>Spenden Details:</h3>
+                                <ul>
+                                    <li><strong>Spendengebiet:</strong> {spendegebiet}</li>
+                                    <li><strong>Gespendete Kleidung:</strong> {kleidung}</li>
+                                    <li><strong>Datum und Uhrzeit:</strong> {currentDateTime.toLocaleString()}</li>
+                                </ul>
                             </Col>
                         </Row>
                     </div>
@@ -71,7 +95,7 @@ function DateTimeComponent() {
 
     return (
         <div>
-            <p><strong>Aufrag wurde erteilt am: </strong>{currentDateTime.toLocaleString()}</p>
+            <p><strong>Datum und Uhrzeit: </strong>{currentDateTime.toLocaleString()}</p>
         </div>
     );
 }
