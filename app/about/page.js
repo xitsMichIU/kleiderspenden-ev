@@ -1,13 +1,9 @@
+import React from "react"
+
+
 export default function About() {
     return <>
-        <h1>Kleiderspenden E.V. aus Singen Hohentwiel</h1>
-        <p>Herzlich willkommen bei Kleiderspenden E.V. – Ihrem engagierten Partner in Sachen Kleiderspenden und humanitärer Hilfe! In Singen Hohentwiel ansässig, sind wir ein Verein mit einer klaren Mission: die Welt ein Stückchen besser machen, indem wir Kleidung an diejenigen weitergeben, die sie am dringendsten benötigen.</p>
-        <p>Unsere Geschichte beginnt mit der festen Überzeugung, dass jeder Mensch das Recht auf angemessene Kleidung hat, unabhängig von seiner Herkunft, seinem sozialen Status oder seiner Lage. Mit diesem Gedanken im Herzen haben wir uns vor Jahren zusammengetan, um eine Organisation zu gründen, die genau das verwirklicht: Kleiderspenden sammeln und sie dorthin leiten, wo sie am meisten gebraucht werden.</p>
-        <p>Was uns von anderen unterscheidet, ist unsere persönliche Verbindung zu denjenigen, die von unserer Hilfe profitieren. Wir haben enge Partnerschaften mit lokalen Gemeinschaften in Krisengebieten aufgebaut, die uns dabei unterstützen, die Spenden gezielt und effektiv zu verteilen. So stellen wir sicher, dass jede einzelne Kleiderspende einen direkten und positiven Einfluss auf das Leben der Menschen hat, die sie erhalten.</p>
-        <p>Unser Team besteht aus engagierten Freiwilligen, die mit Leidenschaft und Mitgefühl arbeiten, um unsere Mission voranzutreiben. Von der Organisation von Kleidersammelaktionen bis hin zur Logistik der Verteilung – jeder Schritt wird von Menschen getragen, die sich dem Wohl anderer verschrieben haben.</p>
-        <p>Doch unsere Arbeit endet nicht mit dem Versand der Spenden. Wir sind stets bestrebt, langfristige Lösungen zu entwickeln, um die Lebensbedingungen derjenigen zu verbessern, die wir unterstützen.</p>
-        <p>Als Kleiderspenden E.V. sind wir stolz darauf, einen Beitrag zu einer Welt zu leisten, in der Solidarität und Mitgefühl die treibenden Kräfte sind. Mit jedem Hemd, jeder Hose und jedem Paar Schuhe, das gespendet wird, kommen wir unserem Ziel näher: eine Welt, in der niemandem das Recht auf Wärme, Schutz und Würde verwehrt bleibt.</p>
-        <p>Wir laden Sie herzlich ein, sich unserer Bewegung anzuschließen und gemeinsam mit uns einen positiven Wandel zu bewirken. Denn zusammen können wir Berge versetzen – oder vielleicht besser gesagt: Kleiderschränke füllen und Herzen erwärmen.</p>
-        <p>Sie finden uns unter folgender Adresse: Julius Bührer Str 16, 78224 Singen Hohentwiel.</p>
+        <h1>Kleiderspenden E.V</h1>
+        <p>Wir sind ein Verein der sich der Organisation und Logistik von Kleiderspenen verschrieben hat.</p>
     </>
 }

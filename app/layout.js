@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de">
       <head>
-        {/*Legt das Icon in der Tabmenü fest*/}
+        {/*Legt das Icon in der Menüleiste Fest*/}
         <link rel="icon" href="img/logo.svg" sizes="any" />
       </head>
       <body>
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <nav>
           <Navbar />
         </nav>
-        {/*Basierend aus der Unterseite wird die unterseite Gerändert*/}
+        {/*Basierend aus der Unterseite wird die Unterseite gerendert*/}
         <main className="main">{children}</main>
         {/*Footer Komponente einfügen*/}
         <footer>

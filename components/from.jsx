@@ -4,8 +4,7 @@
 //Import der benötigten React Methoden
 import { useState } from 'react';
 import React from 'react';
-import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 
 //Import der benötigten React-Bootstrap Methoden
@@ -13,7 +12,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Kleidungsstück from './kleidungswahl';
+import Clothes from './clothes';
 import Alert from 'react-bootstrap/Alert';
 
 //Formular für das Registieren einer Kleiderspende
@@ -515,7 +514,7 @@ export default function Formular() {
 
                                     {/*Spalte: Kleidungsstück*/}
                                     <Form.Group as={Col} md="4" controlId="kleidungsauswahl1">
-                                        <Kleidungsstück onClothesSelection={handleClothesSelection} />
+                                        <Clothes onClothesSelection={handleClothesSelection} />
                                         {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
                                         {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
                                         <Form.Control style={{ display: 'none' }} className={customValidationClothesCount} value={selectedClothes.length} readOnly />
@@ -566,7 +565,7 @@ export default function Formular() {
 
                                     {/*Spalte: Kleidungsstück*/}
                                     <Form.Group as={Col} md="4" controlId="kleidungsauswahl2">
-                                        <Kleidungsstück onClothesSelection={handleClothesSelection} />
+                                        <Clothes onClothesSelection={handleClothesSelection} />
                                         {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
                                         {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
                                         <Form.Control style={{ display: 'none' }} className={customValidationClothesCount} value={selectedClothes.length} readOnly />

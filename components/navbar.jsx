@@ -6,13 +6,10 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-//Importiert das CSS File das eigene Anpassungen enthält
-import "/app/style.css"
-
 //Komponente für die Navigation
 function Navigation() {
     return (
-        <Navbar id="navigation" collapseOnSelect expand="lg" >
+        <Navbar id="navigation" collapseOnSelect expand="lg" data-bs-theme="light" className="mb-2">
             {/*Enthält die Navigationselemente*/}
             {/*Container fluid, damit die Navigation den ganzen Platz einnimmt*/}
             <Container fluid>

@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useEffect } from 'react';
 
-//Importiert das CSS File das eigene Anpassungen enthält
-import "/Users/michaelgeigges/GitHub/kleiderspenden-ev/app/style.css"
-
-const Kleidungsauswahl = ({ onClothesSelection }) => {
+const Clothes = ({ onClothesSelection }) => {
     const [selectedItems, setSelectedItems] = useState([]);
     const allItems = ['Oberteile', 'Unterteile', 'Schuhe', 'Accessories'];
 
@@ -41,4 +38,4 @@ const Kleidungsauswahl = ({ onClothesSelection }) => {
     );
 };
 
-export default Kleidungsauswahl;
+export default Clothes;

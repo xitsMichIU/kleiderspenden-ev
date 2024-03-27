@@ -5,7 +5,7 @@ export default function Imprint() {
             <strong>Firmenname:</strong> Kleiderspenden E.V
         </p>
         <p>
-            <strong>Adresse:</strong> Julius Bührer Str 16, 78224 Singen Hohentwiel
+            <strong>Adresse:</strong> August Ruf Straße 12, 78224 Singen Hohentwiel
         </p>
         <p>
             <strong>Telefon:</strong> +49 123 456789
