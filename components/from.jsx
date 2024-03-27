@@ -622,7 +622,7 @@ export default function Formular() {
                                 <Row className="mb-3">
                                     {/*Spalte: Kriesengebiet*/}
                                     <Form.Group as={Col} md="4" controlId="spendengebiet1">
-                                        <Form.Label>Kriesengebiet</Form.Label>
+                                        <Form.Label>Krisengebiet</Form.Label>
                                         <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
                                             <option value="0">Bitte Wählen</option>
                                             <option value="1">Ukraine</option>
@@ -648,7 +648,7 @@ export default function Formular() {
                                 <Row className="mb-3">
                                     {/*Spalte: AGBs*/}
                                     <Form.Group controlId="agb1">
-                                        <Form.Check label="Ich habe die Datenschutzerklärung gelesen" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
+                                        <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                         <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                     </Form.Group>
@@ -725,7 +725,7 @@ export default function Formular() {
                                 <Row className="mb-3">
                                     {/*Spalte: Kriesengebiet*/}
                                     <Form.Group as={Col} md="4" controlId="spendengebiet2">
-                                        <Form.Label>Kriesengebiet</Form.Label>
+                                        <Form.Label>Krisengebiet</Form.Label>
                                         <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
                                             <option value="0">Bitte Wählen</option>
                                             <option value="1">Ukraine</option>
@@ -751,7 +751,7 @@ export default function Formular() {
                                 <Row className="mb-3">
                                     {/*Spalte: AGBS*/}
                                     <Form.Group controlId="agb2">
-                                        <Form.Check label="Ich habe die Datenschutzerklärung gelese" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
+                                        <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
                                         <Form.Control.Feedback type="invalid">Eingabe prüfen</Form.Control.Feedback>
                                         <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                     </Form.Group>
