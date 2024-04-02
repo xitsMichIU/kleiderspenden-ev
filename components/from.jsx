@@ -2,16 +2,13 @@
 'use client'
 
 //Import der benötigten React Methoden
-import { useState } from 'react';
-import React from 'react';
-import { useRouter } from "next/navigation";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
+//Import der benötigten React-Bootstrap Komponenten
+import { Button, Col, Form, Row } from 'react-bootstrap';
 
-//Import der benötigten React-Bootstrap Methoden
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
+//Import eigener Komponenten
 import Clothes from './clothes';
 
 //Formular für das Registieren einer Kleiderspende
@@ -39,252 +36,148 @@ export default function Formular() {
         setCustomValidationAnrede('custom-select');
         setCustomValidationEmail('custom-select');
         setCustomValidationPhone('custom-select');
+
+        //Die Variablen bei einem Wechsel ebenfalls zurückgesetzt
+        setSpendengebiet("");
+        setVorname("");
+        setNachname("");
+        setStrasse("");
+        setHausnummer("");
+        setPLZ("");
+        setOrt("");
+        setAGB(false);
+        setSelectedClothes("");
+        setAnrede("");
+        setEmail("");
+        setPhone("");
     };
 
-    //Auswahl des Spendengebietes, default Wert wird auf "" für "Bitte wählen" festgelegt
-    const [andrede, setAnrede] = useState("");
-
-    //Konfiguration für die spätere Gültigkeitsprüfung. Ist der Wert in der Variable "Anrede" ungültig wird eine Warnung angezeigt.
-    //Der Standardwert ist leer, das bedeutet, das keine Warnung angezeigt wird beim öffnen des Formulars.
-    const [customValidationAnrede, setCustomValidationAnrede] = useState();
-
-    //Methode die aufgerufen wird, wenn das gewählte Kriesengebiet geändert wird.
-    const handleSelectChangeAnrede = (e) => {
-        //Anpassung der Variable "spendengebiet" mit dem akutellen Wert
-        setAnrede(e.target.value);
-    }
-
-    //Auswahl des Spendengebietes, default Wert wird auf "" für "Bitte wählen" festgelegt
+    //Use State Methoden der Variablen aller Felder 
+    const [anrede, setAnrede] = useState("");
     const [spendengebiet, setSpendengebiet] = useState("");
-
-    //Konfiguration für die spätere Gültigkeitsprüfung. Ist der Wert in der Variable "spendengebiet" ungültig wird eine Warnung angezeigt.
-    //Der Standardwert ist leer, das bedeutet, das keine Warnung angezeigt wird beim öffnen des Formulars.
-    const [customValidationSpendengebiet, setCustomValidationSpendengebiet] = useState();
-
-    //Methode die aufgerufen wird, wenn das gewählte Kriesengebiet geändert wird.
-    const handleSelectChangeKriesengebiet = (e) => {
-        //Anpassung der Variable "spendengebiet" mit dem akutellen Wert
-        setSpendengebiet(e.target.value);
-    }
-
-    //Konfiguration der Zustandsvariable "nachname" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [vorname, setVorname] = useState("");
-    //Konfiguration der Zustandsvariable "customValidationVorname" der den Zustand der Validierung speichert.
     const [customValidationVorname, setCustomValidationVorname] = useState();
-
-    //Methode die aufgerufen wird, wenn der Vorname geändert wird.
-    const handleTextChangeVorname = (e) => {
-        //Anpassung der Variable "Vorname" mit dem akutellen Wert
-        setVorname(e.target.value);
-    }
-
-    //Konfiguration der Zustandsvariable "nachname" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [nachname, setNachname] = useState("");
-    //Konfiguration der Zustandsvariable "customValidationNachname" der den Zustand der Validierung speichert.
     const [customValidationNachname, setCustomValidationNachname] = useState();
-
-    //Methode die aufgerufen wird, wenn der Nachname geändert wird.
-    const handleTextChangeNachname = (e) => {
-        //Anpassung der Variable "Nachname" mit dem akutellen Wert
-        setNachname(e.target.value);
-    }
-
-    //Konfiguration der Zustandsvariable "strasse" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [strasse, setStrasse] = useState("");
-    //Konfiguration der Zustandsvariable "customValidationStrasse" der den Zustand der Validierung speichert.
-    const [customValidationStrasse, setCustomValidationStrasse] = useState();
-
-    //Methode die aufgerufen wird, wenn der die Straße geändert wird.
-    const handleTextChangeStrasse = (e) => {
-        //Anpassung der Variable "Nachname" mit dem akutellen Wert
-        setStrasse(e.target.value);
-    }
-
-    ///Konfiguration der Zustandsvariable "hausnummer" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [hausnummer, setHausnummer] = useState("");
-    //Konfiguration der Zustandsvariable "customValidationHausnummer" der den Zustand der Validierung speichert.
-    const [customValidationHausnummer, setCustomValidationHausnummer] = useState();
-
-    //Methode die aufgerufen wird, wenn der die Hausnummer geändert wird.
-    const handleTextChangeHausnummer = (e) => {
-        //Anpassung der Variable "Hausnummer" mit dem akutellen Wert
-        setHausnummer(e.target.value);
-    }
-
-    ///Konfiguration der Zustandsvariable "plz" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [plz, setPLZ] = useState("");
-    //Konfiguration der Zustandsvariable "customValidationPLZ" der den Zustand der Validierung speichert.
-    const [customValidationPLZ, setCustomValidationPLZ] = useState();
-
-    //Methode die aufgerufen wird, wenn die PLZ geändert wird.
-    const handleTextChangePLZ = (e) => {
-        //Anpassung der Variable "ort" mit dem akutellen Wert
-        setPLZ(e.target.value);
-    }
-
-    //Konfiguration der Zustandsvariable "ort" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [ort, setOrt] = useState("");
-    //Konfiguration der Zustandsvariable "customValidationOrt" der den Zustand der Validierung speichert.
-    const [customValidationOrt, setCustomValidationOrt] = useState();
-
-    //Methode die aufgerufen wird, wenn der Ort geändert wird.
-    const handleTextChangeOrt = (e) => {
-        //Anpassung der Variable "ort" mit dem akutellen Wert
-        setOrt(e.target.value);
-    }
-
-    //Konfiguration der Zustandsvariable "agb" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [agb, setAGB] = useState(false);
-    //Konfiguration der Zustandsvariable "customValidationAGB" der den Zustand der Validierung speichert.
-    const [customValidationAGB, setCustomValidationAGB] = useState();
-
-    //Methode die aufgerufen wird, wenn die Checkbox geändert wird.
-    const handleCheckBoxChangeAGB = (e) => {
-        //Anpassung der Variable "agb" mit dem akutellen Wert
-        setAGB(e.target.checked);
-    }
-
-    //Konfiguration der Zustandsvariable "selectedClothes" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
-    //Diese Variable Speichert ein Array. Das Array enthählt die Ausgewählte Kleidung.
     const [selectedClothes, setSelectedClothes] = useState([]);
-    //Konfiguration der Zustandsvariable "customValidationClothesCount" der den Zustand der Validierung speichert.
-    const [customValidationClothesCount, setCustomValidationClothesCount] = useState();
-
-    //Methode die aufgerufen wird, wenn die ein Kleidungsstück Abgewählt / Ausgewählt wird.
-    const handleClothesSelection = (selectedItems) => {
-        //Anpassung der Variable "selectedItems" mit der akutell selektierten Kleidung
-        setSelectedClothes(selectedItems);
-    };
-
-    //Konfiguration der Zustandsvariable "Telefonnummer" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [phone, setPhone] = useState("");
-    //Konfiguration der Zustandsvariable "customValidationOrt" der den Zustand der Validierung speichert.
-    const [customValidationPhone, setCustomValidationPhone] = useState();
-
-    //Methode die aufgerufen wird, wenn der Ort geändert wird.
-    const handleTextChangePhone = (e) => {
-        //Anpassung der Variable "ort" mit dem akutellen Wert
-        setPhone(e.target.value);
-    }
-
-    //Konfiguration der Zustandsvariable "Email" um die Eingabe zu speichern und dynamisch zu aktuallisieren mit "useState"
     const [email, setEmail] = useState("");
-    //Konfiguration der Zustandsvariable "customValidationOrt" der den Zustand der Validierung speichert.
+
+    const [customValidationSpendengebiet, setCustomValidationSpendengebiet] = useState();
+    const [customValidationAnrede, setCustomValidationAnrede] = useState();
+    const [customValidationStrasse, setCustomValidationStrasse] = useState();
+    const [customValidationHausnummer, setCustomValidationHausnummer] = useState();
+    const [customValidationPLZ, setCustomValidationPLZ] = useState();
+    const [customValidationOrt, setCustomValidationOrt] = useState();
+    const [customValidationAGB, setCustomValidationAGB] = useState();
+    const [customValidationClothesCount, setCustomValidationClothesCount] = useState();
+    const [customValidationPhone, setCustomValidationPhone] = useState();
     const [customValidationEmail, setCustomValidationEmail] = useState();
 
-    //Methode die aufgerufen wird, wenn der Ort geändert wird.
-    const handleTextChangeEmail = (e) => {
-        //Anpassung der Variable "ort" mit dem akutellen Wert
-        setEmail(e.target.value);
-    }
+    //Methoden die eine Eingabe im Formular verarbeiten
+    const handleSelectChangeAnrede = (e) => setAnrede(e.target.value);
+    const handleSelectChangeKriesengebiet = (e) => setSpendengebiet(e.target.value);
+    const handleTextChangeVorname = (e) => setVorname(e.target.value);
+    const handleTextChangeNachname = (e) => setNachname(e.target.value);
+    const handleTextChangeStrasse = (e) => setStrasse(e.target.value);
+    const handleTextChangeHausnummer = (e) => setHausnummer(e.target.value);
+    const handleTextChangePLZ = (e) => setPLZ(e.target.value);
+    const handleTextChangeOrt = (e) => setOrt(e.target.value);
+    const handleCheckBoxChangeAGB = (e) => setAGB(e.target.checked);
+    const handleClothesSelection = (selectedItems) => setSelectedClothes(selectedItems);
+    const handleTextChangePhone = (e) => setPhone(e.target.value);
+    const handleTextChangeEmail = (e) => setEmail(e.target.value);
 
-    //Routers
+    //Router für die Navigation auf die Übersichtsseite
     const router = useRouter();
 
-    //Funktion zur Validierung der Formulardaten. Es muss muss sichergestellt werden, dass alle wichtigen Angaben gemacht wurden.
+    //Funktion zur Validierung der Formulardaten
     const handleSubmit = (event) => {
 
-        //Variable Error dient zur feststellung, ob bei einem der Felder Daten fehlen. Wenn ja wird ein "Submit" verhindert
-        let error = false;
+        //Variable Error dient zur feststellung, ob bei einem der Felder Daten fehlen / falsch sind
+        var error = false;
 
         //Validierung der Felder wenn die Abholmethode 1 (Abholung durch Sammelfahrzeug) ausgewählt wurde
         if (abholmethode === "1") {
 
             //Validerung des Feldes Spendengebiet
-            //Wenn der Wert leer ist, oder eine 0 enthält soll ein Fehler angezeigt werden.
             if (spendengebiet === "") {
                 setCustomValidationSpendengebiet('custom-select is-invalid');
                 error = true;
             } else if (spendengebiet === "0") {
                 setCustomValidationSpendengebiet('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationSpendengebiet('custom-select is-valid');
             }
 
             //Validerung des Feldes Anrede
-            console.log(andrede)
-            //Wenn der Wert leer ist, oder eine 0 enthält soll ein Fehler angezeigt werden.
-            if (andrede === "") {
+            if (anrede === "") {
                 setCustomValidationAnrede('custom-select is-invalid');
                 error = true;
-            } else if (andrede === "0") {
+            } else if (anrede === "0") {
                 setCustomValidationAnrede('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationAnrede('custom-select is-valid');
             }
 
-            //Validerung des Feldes vorname
-            //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
+            //Validerung des Feldes Norname
             if (vorname === "") {
                 setCustomValidationVorname('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationVorname('custom-select is-valid');
             }
 
             //Validerung des Feldes Nachname
-            //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (nachname === "") {
                 setCustomValidationNachname('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationNachname('custom-select is-valid');
             }
 
             //Validerung des Feldes Straße
-            //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (strasse === "") {
                 setCustomValidationStrasse('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationStrasse('custom-select is-valid');
             }
 
             //Validerung des Feldes Hausnummer
-            //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (hausnummer === "") {
                 setCustomValidationHausnummer('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationHausnummer('custom-select is-valid');
             }
 
             //Validerung des Feldes PLZ
-            //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (plz === "") {
                 setCustomValidationPLZ('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else if (plz !== "") {
+            } else if (plz !== "") {
 
-                // Überprüfe, ob der Text mit "78" beginnt
+                //Überprüft ob der Text mit "78" beginnt
                 const beginntMit78 = plz.startsWith("78");
 
-                // Überprüfe, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt
+                //Überprüft, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt
                 const nichtLaengerAls5 = plz.length <= 5;
 
-                // Überprüfe, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt
+                //Überprüft, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt
                 const nichtKleinerAls5 = plz.length >= 5;
 
-                // Überprüfe, ob alle Zeichen im Text Zahlen von 1 bis 9 sind
+                //Überprüft, ob alle Zeichen im Text Zahlen von 1 bis 9 sind
                 const nurZahlen1Bis9 = /^[1-9]+$/.test(plz);
 
-                // Gib false zurück, wenn eine der Bedingungen verletzt wurde
+                //Wenn eine  der Bedingungen falsch ist wird ein Fehler angezeigt
                 if (beginntMit78 && nichtLaengerAls5 && nichtKleinerAls5 && nurZahlen1Bis9) {
                     setCustomValidationPLZ('custom-select is-valid');
                 } else {
@@ -294,7 +187,6 @@ export default function Formular() {
             }
 
             //Validerung des Feldes Ort
-            //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (ort === "") {
                 setCustomValidationOrt('custom-select is-invalid');
                 error = true;
@@ -303,136 +195,97 @@ export default function Formular() {
             }
 
             //Validerung des Feldes AGB
-            //Wenn der Wert false ist soll ein Fehler angezeigt werden.
             if (agb === false) {
                 setCustomValidationAGB('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationAGB('custom-select is-valid');
             }
 
             //Validerung des Feldes Kleiderauswahl
-            //Wenn die Länge des Arrays 0 ist, soll ein Fehler angezeigt werden. Ein leeres Array bedeutet es wurde keine Kleidung ausgewählt.
             if (selectedClothes.length == 0) {
                 setCustomValidationClothesCount('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationClothesCount('custom-select is-valid');
             }
 
+            //Validerung des Feldes Telefonnummer
             if (phone == "") {
                 setCustomValidationPhone('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationPhone('custom-select is-valid');
             }
 
+            //Validerung des Feldes Email
             if (email == "") {
                 setCustomValidationEmail('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationEmail('custom-select is-valid');
             }
 
-            //Wurde kein Error gefunden, wird das Formular abgesendet
+            //Wurde kein Fehler gefunden, wird das Formular abgesendet
             if (error) {
-                //Verhinden das Formular neu geladen wird
+                //Verhindern, dass das Formular Abgesendet werden kann
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-                //Verhinden das Formular neu geladen wird
+                //Verhindern, dass das Formular neu geladen wird
                 event.preventDefault();
-                //URL die die Variablen als Parameter enthält
 
-                let spendengebietText = "";
+                //URL zur Übergabe der Variablen wird erstellt
+                const url = `/donate/summary?&anrede=${anrede}&vorname=${vorname}&nachname=${nachname}&strasse=${strasse}&hausnummer=${hausnummer}&plz=${plz}&ort=${ort}&spendegebiet=${spendengebiet}&kleidung=${selectedClothes}&abholmethode=${abholmethode}&email=${email}&phone=${phone}`;
 
-                if (spendengebiet == 1) {
-                    spendengebietText = "Ukraine"
-                } else if (spendengebiet == 2) {
-                    spendengebietText = "Israel"
-                } else if (spendengebiet == 3) {
-                    spendengebietText = "Malaysia"
-                }
-
-                let anredeText = "";
-
-                if (andrede == 1) {
-                    anredeText = "Herr"
-                } else if (andrede == 2) {
-                    anredeText = "Frau"
-                } else if (andrede == 3) {
-                    anredeText = "Divers"
-                }
-
-                const url = `/donate/summary?&anrede=${anredeText}&vorname=${vorname}&nachname=${nachname}&strasse=${strasse}&hausnummer=${hausnummer}&plz=${plz}&ort=${ort}&spendegebiet=${spendengebietText}&kleidung=${selectedClothes}&abholmethode=${abholmethode}&email=${email}&phone=${phone}`;
+                //Weiterleitung zur Übersichtsseite
                 router.push(url);
+
             }
         }
 
         //Validerung der Felder wenn die Abholmethode den Wert 2 hat (Abgabe an Geschäftsstelle)
         else if (abholmethode === "2") {
 
-            //Validerung des Feldes Spendengebiet
-            //Wenn der Wert leer oder 0 ist soll ein Fehler angezeigt werden.
-
             //Validerung des Feldes Anrede
-            console.log(andrede)
-            //Wenn der Wert leer ist, oder eine 0 enthält soll ein Fehler angezeigt werden.
-            if (andrede === "") {
+            if (anrede === "") {
                 setCustomValidationAnrede('custom-select is-invalid');
                 error = true;
-            } else if (andrede === "0") {
+            } else if (anrede === "0") {
                 setCustomValidationAnrede('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationAnrede('custom-select is-valid');
             }
 
-            //Validerung des Feldes vorname
-            //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
+            //Validerung des Feldes Vorname
             if (vorname === "") {
                 setCustomValidationVorname('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationVorname('custom-select is-valid');
             }
 
             //Validerung des Feldes Nachname
-            //Wenn der Wert leer ist soll ein Fehler angezeigt werden.
             if (nachname === "") {
                 setCustomValidationNachname('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationNachname('custom-select is-valid');
             }
 
+            //Validerung des Feldes Spendengebiet
             if (spendengebiet === "") {
                 setCustomValidationSpendengebiet('custom-select is-invalid');
                 error = true;
             } else if (spendengebiet === "0") {
                 setCustomValidationSpendengebiet('custom-select is-invalid');
                 error = true;
-            }
-            else {
+            } else {
                 setCustomValidationSpendengebiet('custom-select is-valid');
             }
 
             //Validerung des Feldes Kleiderauswahl
-            //Wenn die Länge des Arrays 0 ist, soll ein Fehler angezeigt werden. Ein leeres Array bedeutet es wurde keine Kleidung ausgewählt.
             if (selectedClothes.length == 0) {
                 setCustomValidationClothesCount('custom-select is-invalid');
                 error = true;
@@ -441,7 +294,6 @@ export default function Formular() {
             }
 
             //Validerung des Feldes AGB
-            //Wenn der Wert false ist soll ein Fehler angezeigt werden.
             if (agb === false) {
                 setCustomValidationAGB('custom-select is-invalid');
                 error = true;
@@ -449,326 +301,254 @@ export default function Formular() {
                 setCustomValidationAGB('custom-select is-valid');
             }
 
+            //Validerung des Feldes Telefonnummer
             if (phone == "") {
                 setCustomValidationPhone('custom-select is-invalid');
                 error = true;
-            }
-            //Wenn kein Fehler erkannt worden ist, wird das Feld als valid angezeigt
-            else {
+            } else {
                 setCustomValidationPhone('custom-select is-valid');
             }
 
+            //Validerung des Feldes Email
             if (email == "") {
                 setCustomValidationEmail('custom-select is-invalid');
                 error = true;
+            } else {
+                setCustomValidationEmail('custom-select is-valid');
             }
 
-            //Wurde ein fehler gefunden wird, wird das Formular nicht abgesendet
-            // Wurde ein Fehler gefunden, wird das Formular nicht abgesendet
+            //Wurde ein Fehler gefunden wird, wird das Formular nicht abgesendet
             if (error) {
+                //Verhindern, dass das Formular Abgesendet werden kann
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-
-                let spendengebietText = "";
-
-                if (spendengebiet == 1) {
-                    spendengebietText = "Ukraine"
-                } else if (spendengebiet == 2) {
-                    spendengebietText = "Israel"
-                } else if (spendengebiet == 3) {
-                    spendengebietText = "Malaysia"
-                }
-
-                let anredeText = "";
-
-                if (andrede == 1) {
-                    anredeText = "Herr"
-                } else if (andrede == 2) {
-                    anredeText = "Frau"
-                } else if (andrede == 3) {
-                    anredeText = "Divers"
-                }
-
+                //Verhindern, dass das Formular neu geladen wird
                 event.preventDefault();
-                const url = `/donate/summary?&anrede=${anredeText}&vorname=${vorname}&nachname=${nachname}&spendegebiet=${spendengebietText}&kleidung=${selectedClothes}&abholmethode=${abholmethode}&email=${email}&phone=${phone}`;
+
+                //Erstellen der URL die alle Variablen enthält
+                const url = `/donate/summary?&anrede=${anrede}&vorname=${vorname}&nachname=${nachname}&spendegebiet=${spendengebiet}&kleidung=${selectedClothes}&abholmethode=${abholmethode}&email=${email}&phone=${phone}`;
+
+                //Weiterleitung zur Übersichtsseite
                 router.push(url);
             }
         }
     };
 
-    //Rendert das Formular
+    //Formular erstellung
     return (
-        //noValidate: Deaktiviert die Standard-Formularvalidierung des Browsers.
-        //onSubmit: Die Funktion "handleSubmit" zur Validierung wird aufgerufen
-        <Form noValidate onSubmit={handleSubmit}>
+        <>
+            <Form noValidate onSubmit={handleSubmit}>
+                <Row>
+                    <Form.Group className="mb-2" as={Col} md="4" controlId="abholmethode">
+                        <Form.Label>Wie möchtest du Spenden?</Form.Label>
+                        <Form.Select value={abholmethode} onChange={handleSelectChangeAbholmethode}>
+                            <option>Bitte wählen</option>
+                            <option value="1">Abholung durch Sammelfahrzeug</option>
+                            <option value="2">Abgabe an der Geschäftsstelle</option>
+                        </Form.Select>
+                    </Form.Group>
+                </Row >
 
-            {/*Erste Spalte des Formulars*/}
-            {/* className="mb-3": Margin nach unten wird festgelegt */}
-            <Row className="mb-3">
+                <>
+                    {(() => {
+                        //Option 1 bedeutet dass eine Abholung mit dem Sammelfahrzeug erfolgt.
+                        if (abholmethode === "1") {
+                            return (
+                                <>
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="2" controlId="geschlecht">
+                                            <Form.Label>Anrede</Form.Label>
+                                            <Form.Select className={customValidationAnrede} value={anrede} onChange={handleSelectChangeAnrede}>
+                                                <option value="0">Bitte wählen</option>
+                                                <option value="1">Herr</option>
+                                                <option value="2">Frau</option>
+                                                <option value="3">Divers</option>
+                                            </Form.Select>
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-                {/* Form.Group: Element um in Bootstrap für Formularkomponenten */}
-                {/* as={Col}: Legt fest, dass es sich um eine Spalte handelt */}
-                {/* md="4": Option um die Größe des Feldes festzulegen, es werden vier Spalten verwendet */}
-                {/* controlId: Eindeutige Kennung des Elements im Formular */}
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="3" controlId="vorname">
+                                            <Form.Label>Vorname</Form.Label>
+                                            <Form.Control className={customValidationVorname} value={vorname} onChange={handleTextChangeVorname} type="text" placeholder="Vorname" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group className="mb-2" as={Col} md="3" controlId="nachname">
+                                            <Form.Label>Nachname</Form.Label>
+                                            <Form.Control className={customValidationNachname} value={nachname} onChange={handleTextChangeNachname} type="text" placeholder="Nachname" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row >
 
-                <Form.Group as={Col} md="4" controlId="abholmethode">
-                    <Form.Label>Wie möchtest du Spenden?</Form.Label>
-                    <Form.Select value={abholmethode} onChange={handleSelectChangeAbholmethode}>
-                        <option>Bitte wählen...</option>
-                        <option value="1">Abholung durch Sammelfahrzeug</option>
-                        <option value="2">Abgabe an der Geschäftsstelle</option>
-                    </Form.Select>
-                </Form.Group>
-            </Row >
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="5" controlId="strasse" >
+                                            <Form.Label>Straße</Form.Label>
+                                            <Form.Control className={customValidationStrasse} value={strasse} onChange={handleTextChangeStrasse} type="text" placeholder="Straße" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group className="mb-2" as={Col} md="3" controlId="hausnummer">
+                                            <Form.Label>Hausnummer</Form.Label>
+                                            <Form.Control className={customValidationHausnummer} value={hausnummer} onChange={handleTextChangeHausnummer} type="text" placeholder="Hausnummer" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-            <div>
-                {/*Basierend auf Abholmethode wird das passende Formular erstellt*/}
-                {(() => {
-                    //Option 1 bedeutet dass eine Abholung mit dem Sammelfahrzeug erfolgt.
-                    if (abholmethode === "1") {
-                        return (
-                            <>
-                                {/*Zweite Zeile*/}
-                                <Row className="mb-3">
-                                    {/*Spalte: Anrede*/}
-                                    <Form.Group as={Col} md="2" controlId="geschlecht">
-                                        <Form.Label>Anrede</Form.Label>
-                                        <Form.Select className={customValidationAnrede} value={andrede} onChange={handleSelectChangeAnrede}>
-                                            <option value="0">Bitte Wählen</option>
-                                            <option value="1">Herr</option>
-                                            <option value="2">Frau</option>
-                                            <option value="3">Divers</option>
-                                        </Form.Select>
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-                                <Row className="mb-3">
-                                    {/*Spalte: Vorname*/}
-                                    <Form.Group as={Col} md="3" controlId="vorname">
-                                        <Form.Label>Vorname</Form.Label>
-                                        <Form.Control className={customValidationVorname} value={vorname} onChange={handleTextChangeVorname} type="text" placeholder="Vorname" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="2" controlId="plz">
+                                            <Form.Label>Postleitzahl</Form.Label>
+                                            <Form.Control className={customValidationPLZ} value={plz} onChange={handleTextChangePLZ} type="text" placeholder="PLZ" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group className="mb-2" as={Col} md="6" controlId="ort">
+                                            <Form.Label>Ort</Form.Label>
+                                            <Form.Control className={customValidationOrt} value={ort} onChange={handleTextChangeOrt} type="text" placeholder="Ort" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-                                    {/*Spalte: Nachname*/}
-                                    <Form.Group as={Col} md="3" controlId="nachname">
-                                        <Form.Label>Nachname</Form.Label>
-                                        <Form.Control className={customValidationNachname} value={nachname} onChange={handleTextChangeNachname} type="text" placeholder="Nachname" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row >
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="4" controlId="email">
+                                            <Form.Label>Email Adresse</Form.Label>
+                                            <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="text" placeholder="Email" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group className="mb-2" as={Col} md="4" controlId="telefon">
+                                            <Form.Label>Telefonnummer</Form.Label>
+                                            <Form.Control className={customValidationPhone} value={phone} onChange={handleTextChangePhone} type="text" placeholder="Telefonnummer" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-                                {/*Dritte Zeile*/}
-                                < Row className="mb-3" >
-                                    {/*Spalte: Straße*/}
-                                    < Form.Group as={Col} md="5" controlId="strasse" >
-                                        <Form.Label>Straße</Form.Label>
-                                        <Form.Control className={customValidationStrasse} value={strasse} onChange={handleTextChangeStrasse} type="text" placeholder="Straße" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="4" controlId="spendengebiet1">
+                                            <Form.Label>Krisengebiet</Form.Label>
+                                            <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
+                                                <option value="0">Bitte wählen</option>
+                                                <option value="1">Ukraine</option>
+                                                <option value="2">Israel</option>
+                                                <option value="3">Malaisya</option>
+                                            </Form.Select>
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group className="mb-2" as={Col} md="4" controlId="kleidungsauswahl1">
+                                            <Clothes onClothesSelection={handleClothesSelection} />
+                                            {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
+                                            {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert das Arrays mindestens 1 ist*/}
+                                            <Form.Control style={{ display: 'none' }} className={customValidationClothesCount} value={selectedClothes.length} readOnly />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-                                    {/*Spalte: Hausnummer*/}
-                                    <Form.Group as={Col} md="3" controlId="hausnummer">
-                                        <Form.Label>Hausnummer</Form.Label>
-                                        <Form.Control className={customValidationHausnummer} value={hausnummer} onChange={handleTextChangeHausnummer} type="text" placeholder="Hausnummer" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
+                                    <Row>
+                                        <Form.Group className="mb-2" controlId="agb1">
+                                            <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
+                                    <Button type="submit" className="mb-3">Spende Abgeben </Button>
+                                </>
+                            )
 
-                                {/*Vierte Zeile*/}
-                                <Row className="mb-3">
-                                    {/*Spalte: Postleitzahl*/}
-                                    <Form.Group as={Col} md="2" controlId="plz">
-                                        <Form.Label>Postleitzahl</Form.Label>
-                                        <Form.Control className={customValidationPLZ} value={plz} onChange={handleTextChangePLZ} type="text" placeholder="PLZ" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
+                        }
+                        //Option für die Abgabe an der Geschäftsstelle    
+                        else if (abholmethode === "2") {
+                            return (
+                                <>
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="2" controlId="geschlecht">
+                                            <Form.Label>Anrede</Form.Label>
+                                            <Form.Select className={customValidationAnrede} value={anrede} onChange={handleSelectChangeAnrede}>
+                                                <option value="0">Bitte wählen</option>
+                                                <option value="1">Herr</option>
+                                                <option value="2">Frau</option>
+                                                <option value="3">Divers</option>
+                                            </Form.Select>
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-                                    {/*Spalte: Ort*/}
-                                    <Form.Group as={Col} md="6" controlId="ort">
-                                        <Form.Label>Ort</Form.Label>
-                                        <Form.Control className={customValidationOrt} value={ort} onChange={handleTextChangeOrt} type="text" placeholder="Ort" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="3" controlId="vorname">
+                                            <Form.Label>Vorname</Form.Label>
+                                            <Form.Control className={customValidationVorname} value={vorname} onChange={handleTextChangeVorname} type="text" placeholder="Vorname" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group className="mb-2" as={Col} md="3" controlId="nachname">
+                                            <Form.Label>Nachname</Form.Label>
+                                            <Form.Control className={customValidationNachname} value={nachname} onChange={handleTextChangeNachname} type="text" placeholder="Nachname" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-                                <Row className="mb-3">
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="4" controlId="email">
+                                            <Form.Label>Email Adresse</Form.Label>
+                                            <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="text" placeholder="Email" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group className="mb-2" as={Col} md="4" controlId="telefon">
+                                            <Form.Label>Telefonnummer</Form.Label>
+                                            <Form.Control className={customValidationPhone} value={phone} onChange={handleTextChangePhone} type="text" placeholder="Telefonnummer" />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-                                    {/*Spalte: Email*/}
-                                    <Form.Group as={Col} md="4" controlId="email">
-                                        <Form.Label>Email Adresse</Form.Label>
-                                        <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="text" placeholder="Email" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
+                                    <Row>
+                                        <Form.Group className="mb-2" as={Col} md="4" controlId="spendengebiet2">
+                                            <Form.Label>Krisengebiet</Form.Label>
+                                            <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
+                                                <option value="0">Bitte wählen</option>
+                                                <option value="1">Ukraine</option>
+                                                <option value="2">Israel</option>
+                                                <option value="3">Malaisya</option>
+                                            </Form.Select>
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group className="mb-2" as={Col} md="4" controlId="kleidungsauswahl2">
+                                            <Clothes onClothesSelection={handleClothesSelection} />
+                                            {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
+                                            {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
+                                            <Form.Control style={{ display: 'none' }} className={customValidationClothesCount} value={selectedClothes.length} readOnly />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
 
-                                    <Form.Group as={Col} md="4" controlId="telefon">
-                                        <Form.Label>Telefonnummer</Form.Label>
-                                        <Form.Control className={customValidationPhone} value={phone} onChange={handleTextChangePhone} type="text" placeholder="Telefonnummer" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-
-                                {/*Fünfte Zeile*/}
-                                <Row className="mb-3">
-                                    {/*Spalte: Kriesengebiet*/}
-                                    <Form.Group as={Col} md="4" controlId="spendengebiet1">
-                                        <Form.Label>Krisengebiet</Form.Label>
-                                        <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
-                                            <option value="0">Bitte Wählen</option>
-                                            <option value="1">Ukraine</option>
-                                            <option value="2">Israel</option>
-                                            <option value="3">Malaisya</option>
-                                        </Form.Select>
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-
-                                    {/*Spalte: Kleidungsstück*/}
-                                    <Form.Group as={Col} md="4" controlId="kleidungsauswahl1">
-                                        <Clothes onClothesSelection={handleClothesSelection} />
-                                        {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
-                                        {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
-                                        <Form.Control style={{ display: 'none' }} className={customValidationClothesCount} value={selectedClothes.length} readOnly />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-
-                                {/*Sechste Zeile*/}
-                                <Row className="mb-3">
-                                    {/*Spalte: AGBs*/}
-                                    <Form.Group controlId="agb1">
-                                        <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-
-                                {/*Button um das Formular abzusenden*/}
-
-                                <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-
-
-                                <Button type="submit" className="mb-3">Spende Abgeben </Button>
-
-                            </>
-                        )
-
-                    }
-                    //Option für die Abgabe an der Geschäftsstelle    
-                    else if (abholmethode === "2") {
-                        return (
-                            <>
-                                {/*Zweite Zeile*/}
-                                <Row className="mb-3">
-                                    {/*Spalte: Anrede*/}
-                                    <Form.Group as={Col} md="2" controlId="geschlecht">
-                                        <Form.Label>Anrede</Form.Label>
-                                        <Form.Select className={customValidationAnrede} value={andrede} onChange={handleSelectChangeAnrede}>
-                                            <option value="0">Bitte Wählen</option>
-                                            <option value="1">Herr</option>
-                                            <option value="2">Frau</option>
-                                            <option value="3">Divers</option>
-                                        </Form.Select>
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-
-                                </Row>
-
-                                <Row className="mb-3">
-                                    {/*Spalte: Vorname*/}
-                                    <Form.Group as={Col} md="3" controlId="vorname">
-                                        <Form.Label>Vorname</Form.Label>
-                                        <Form.Control className={customValidationVorname} value={vorname} onChange={handleTextChangeVorname} type="text" placeholder="Vorname" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-
-                                    {/*Spalte: Nachname*/}
-                                    <Form.Group as={Col} md="3" controlId="nachname">
-                                        <Form.Label>Nachname</Form.Label>
-                                        <Form.Control className={customValidationNachname} value={nachname} onChange={handleTextChangeNachname} type="text" placeholder="Nachname" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-
-                                <Row className="mb-3">
-
-                                    {/*Spalte: Email*/}
-                                    <Form.Group as={Col} md="4" controlId="email">
-                                        <Form.Label>Email Adresse</Form.Label>
-                                        <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="text" placeholder="Email" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-
-                                    <Form.Group as={Col} md="4" controlId="telefon">
-                                        <Form.Label>Telefonnummer</Form.Label>
-                                        <Form.Control className={customValidationPhone} value={phone} onChange={handleTextChangePhone} type="text" placeholder="Telefonnummer" />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-
-                                <Row className="mb-3">
-                                    {/*Spalte: Kriesengebiet*/}
-                                    <Form.Group as={Col} md="4" controlId="spendengebiet2">
-                                        <Form.Label>Krisengebiet</Form.Label>
-                                        <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
-                                            <option value="0">Bitte Wählen</option>
-                                            <option value="1">Ukraine</option>
-                                            <option value="2">Israel</option>
-                                            <option value="3">Malaisya</option>
-                                        </Form.Select>
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-
-                                    {/*Spalte: Kleidungsstück*/}
-                                    <Form.Group as={Col} md="4" controlId="kleidungsauswahl2">
-                                        <Clothes onClothesSelection={handleClothesSelection} />
-                                        {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
-                                        {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
-                                        <Form.Control style={{ display: 'none' }} className={customValidationClothesCount} value={selectedClothes.length} readOnly />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-
-
-                                {/*Dritte Zeile*/}
-                                <Row className="mb-3">
-                                    {/*Spalte: AGBS*/}
-                                    <Form.Group controlId="agb2">
-                                        <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
-                                        <Form.Control.Feedback type="invalid">Eingabe prüfen</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Row>
-
-                                {/*Button um das Formular abzusenden*/}
-                                <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                <Button type="submit" className="mb-3">Spende Abgeben </Button>
-                            </>
-                        )
-                    } else {
-                        return null;
-                    }
-                })()}
-            </div >
-        </Form >
+                                    <Row>
+                                        <Form.Group className="mb-2" controlId="agb2">
+                                            <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu" className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
+                                            <Form.Control.Feedback type="invalid">Eingabe prüfen</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Row>
+                                    <Button type="submit" className="mb-3">Spende Abgeben </Button>
+                                </>
+                            )
+                        } else {
+                            return null;
+                        }
+                    })()}
+                </>
+            </Form >
+        </>
     );
 }
-
-

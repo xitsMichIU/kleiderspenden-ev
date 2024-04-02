@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
-import { useEffect } from 'react';
+//Importieren der React komponenten
+import React, { useState, useEffect } from 'react';
 
-const Clothes = ({ onClothesSelection }) => {
+//Importieren der Bootstrap Komponenten
+import { Form } from 'react-bootstrap';
+
+export default function Clothes({ onClothesSelection }) {
     const [selectedItems, setSelectedItems] = useState([]);
     const allItems = ['Oberteile', 'Unterteile', 'Schuhe', 'Accessories'];
 
@@ -37,5 +39,3 @@ const Clothes = ({ onClothesSelection }) => {
         </div>
     );
 };
-
-export default Clothes;

@@ -5,7 +5,7 @@ import Footer from "@/components/footer";
 //Importiert das CSS File für Bootstrap 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-//Importiert das CSS File das eigene Anpassungen enthält
+//Importiert das eigene CSS File
 import "./style.css"
 
 //Variable das die Metadaten für die Webseite Enthält

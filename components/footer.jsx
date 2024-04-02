@@ -1,18 +1,17 @@
-//Erstellt die Komponente des Footers
-function Footer() {
-    return (
-        <>
-            {/*Enthält die Navigationselemente*/}
-            <ul id="footer" className="nav justify-content-center fixed-bottom" >
-                <li className="nav-item">
-                    <a className="nav-link" href="/legal">Impressum</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="/privacy">Datenschutzerklärung</a>
-                </li>
-            </ul>
-        </>
-    );
-}
+//Use client wegen der Navbar Komponenten
+'use client'
 
-export default Footer;
+//Importieren der React-Boostrap Komponenten
+import { Nav, Navbar } from 'react-bootstrap';
+
+export default function Footer() {
+  return (
+    <Navbar id="footer" className="justify-content-center fixed-bottom">
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Nav className="mx-auto">
+        <Nav.Link href="/privacy">Datenschutz</Nav.Link>
+        <Nav.Link href="/legal">Impressum</Nav.Link>
+      </Nav>
+    </Navbar>
+  );
+}

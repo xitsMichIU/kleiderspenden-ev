@@ -1,25 +1,27 @@
-//Client Komponente wegen "Use State"
-"use client";
+//Client Komponente wegen der Container Komponente
+'use client'
 
-//Importiert die benötigten Methoden und Komponenten
-import { useState } from "react";
+//Importiert die React-Bootstrap Komponenten
+import { Container } from "react-bootstrap";
 
-import Formular from "@/components/from";
+//Importiert die CSS Datei
 import "/app/style.css"
+
+//Importiert die eigenen Komponenten
+import Formular from "@/components/from";
 import Manual from "@/components/manual";
 
 export default function Donate() {
-
     return (
-        <div>
+        <Container fluid>
             <h1>Spenden Sie jetzt!</h1>
             <p>Sie benötigten eine Anleitung?</p>
-            <div className="mb-3">
+            <div className="mb-2">
                 <Manual />
             </div>
             <h3 >Spende hier Registrieren</h3>
             <Formular />
-        </div >
+        </Container >
     );
 }
 
