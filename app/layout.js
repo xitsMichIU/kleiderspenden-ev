@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 //Importiert das eigene CSS File
 import "./style.css"
+import { Suspense } from "react";
 
 //Variable das die Metadaten für die Webseite Enthält
 export const metadata = {
@@ -28,12 +29,17 @@ export default function RootLayout({ children }) {
           <Navbar />
         </nav>
         {/*Basierend aus der Unterseite wird die Unterseite gerendert*/}
-        <main className="main">{children}</main>
+        <main className="main">
+          {/*Suspend wird benötigt um die Summary Page zu laden als Kind Komponente*/}
+          <Suspense>
+            {children}
+          </Suspense>
+        </main>
         {/*Footer Komponente einfügen*/}
         <footer>
           <Footer />
         </footer>
       </body>
-    </html>
+    </html >
   );
 }

@@ -2,8 +2,11 @@
 "use client";
 
 // Importiert die benötigten Methoden und Komponenten
+// Suspense Komponente wird benötigt um einen fehler zu Verhindern.
+//https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+
 import { useSearchParams } from "next/navigation";
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 //Importiert die CSS Datei
@@ -21,20 +24,21 @@ export default function Summary() {
     const [currentDateTime] = useState(new Date());
 
     //Auslesen der Parameter raus der URL
-    abholmethode = searchParams.get("abholmethode");
-    vorname = searchParams.get("vorname");
-    nachname = searchParams.get("nachname");
-    strasse = searchParams.get("strasse");
-    hausnummer = searchParams.get("hausnummer");
-    plz = searchParams.get("plz");
-    ort = searchParams.get("ort");
-    kleidung = searchParams.get("kleidung");
-    spendegebiet = searchParams.get("spendegebiet");
-    kleidung = searchParams.get("kleidung");
-    email = searchParams.get("email");
-    phone = searchParams.get("phone");
-    anrede = parseInt(searchParams.get("anrede"));
-    spendegebiet = parseInt(searchParams.get("anrede"));
+
+        abholmethode = searchParams.get("abholmethode");
+        vorname = searchParams.get("vorname");
+        nachname = searchParams.get("nachname");
+        strasse = searchParams.get("strasse");
+        hausnummer = searchParams.get("hausnummer");
+        plz = searchParams.get("plz");
+        ort = searchParams.get("ort");
+        kleidung = searchParams.get("kleidung");
+        spendegebiet = searchParams.get("spendegebiet");
+        kleidung = searchParams.get("kleidung");
+        email = searchParams.get("email");
+        phone = searchParams.get("phone");
+        anrede = parseInt(searchParams.get("anrede"));
+        spendegebiet = parseInt(searchParams.get("anrede"));
 
     switch (spendegebiet) {
         case 1:
@@ -65,7 +69,7 @@ export default function Summary() {
     }
 
     return (
-        <>
+        <Suspense>
             {abholmethode === "1" ? (
                 <div>
                     <h1>Abholung erfolgreich beauftragt!</h1>
@@ -117,7 +121,7 @@ export default function Summary() {
                     </div>
                 ) : null
             )}
-        </>
+        </Suspense>
     );
 }
 
