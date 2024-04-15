@@ -9,7 +9,6 @@ import { Container } from "react-bootstrap"
 //Importiert die CSS Datei
 import "/app/style.css"
 
-
 export default function Privacy() {
     return (
         <Container fluid>

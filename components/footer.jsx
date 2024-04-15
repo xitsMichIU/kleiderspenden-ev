@@ -6,7 +6,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 
 export default function Footer() {
   return (
-    <Navbar id="footer" className="justify-content-center fixed-bottom">
+    <Navbar id="footer" className="justify-content-center bottom">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Nav className="mx-auto">
         <Nav.Link href="/privacy">Datenschutz</Nav.Link>

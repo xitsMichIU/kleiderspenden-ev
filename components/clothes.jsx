@@ -10,13 +10,19 @@ export default function Clothes({ onClothesSelection }) {
 
     const handleCheckboxChange = (item) => {
         setSelectedItems((prevSelectedItems) => {
-            const updatedItems = prevSelectedItems.includes(item)
-                ? prevSelectedItems.filter((selectedItem) => selectedItem !== item)
-                : [...prevSelectedItems, item];
-            return updatedItems;
+            if (prevSelectedItems.includes(item)) {
+                //Wenn das Element bereits ausgewählt ist, entferne es aus der Liste.
+                const updatedItems = prevSelectedItems.filter((selectedItem) => selectedItem !== item);
+                return updatedItems;
+            } else {
+                // Wenn das Element noch nicht ausgewählt ist, füge es zur Liste hinzu.
+                const updatedItems = [...prevSelectedItems, item];
+                return updatedItems;
+            }
         });
     };
 
+    //use Effect wird immer Aufgerufen, wenn die selectedItems variable geändert wird
     useEffect(() => {
         // Hier wird die Funktion onClothesSelection mit dem aktualisierten Zustand aufgerufen und ans Formular übergeben
         onClothesSelection(selectedItems);

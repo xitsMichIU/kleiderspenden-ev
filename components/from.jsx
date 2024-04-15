@@ -219,7 +219,10 @@ export default function Formular() {
             }
 
             //Validerung des Feldes Email
-            if (email == "") {
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+            if (emailRegex.test(email) === false) {
                 setCustomValidationEmail('custom-select is-invalid');
                 error = true;
             } else {
@@ -418,7 +421,7 @@ export default function Formular() {
                                     <Row>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="email">
                                             <Form.Label>Email Adresse</Form.Label>
-                                            <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="text" placeholder="Email" />
+                                            <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="email" placeholder="Email" />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
@@ -500,7 +503,7 @@ export default function Formular() {
                                     <Row>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="email">
                                             <Form.Label>Email Adresse</Form.Label>
-                                            <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="text" placeholder="Email" />
+                                            <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="email" placeholder="Email" />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>

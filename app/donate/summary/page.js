@@ -25,20 +25,20 @@ export default function Summary() {
 
     //Auslesen der Parameter raus der URL
 
-        abholmethode = searchParams.get("abholmethode");
-        vorname = searchParams.get("vorname");
-        nachname = searchParams.get("nachname");
-        strasse = searchParams.get("strasse");
-        hausnummer = searchParams.get("hausnummer");
-        plz = searchParams.get("plz");
-        ort = searchParams.get("ort");
-        kleidung = searchParams.get("kleidung");
-        spendegebiet = searchParams.get("spendegebiet");
-        kleidung = searchParams.get("kleidung");
-        email = searchParams.get("email");
-        phone = searchParams.get("phone");
-        anrede = parseInt(searchParams.get("anrede"));
-        spendegebiet = parseInt(searchParams.get("anrede"));
+    abholmethode = searchParams.get("abholmethode");
+    vorname = searchParams.get("vorname");
+    nachname = searchParams.get("nachname");
+    strasse = searchParams.get("strasse");
+    hausnummer = searchParams.get("hausnummer");
+    plz = searchParams.get("plz");
+    ort = searchParams.get("ort");
+    kleidung = searchParams.get("kleidung");
+    spendegebiet = searchParams.get("spendegebiet");
+    kleidung = searchParams.get("kleidung");
+    email = searchParams.get("email");
+    phone = searchParams.get("phone");
+    anrede = parseInt(searchParams.get("anrede"));
+    spendegebiet = parseInt(searchParams.get("anrede"));
 
     switch (spendegebiet) {
         case 1:
