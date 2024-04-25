@@ -13,6 +13,8 @@ export default function About() {
         <Container fluid>
             <h1>Kleiderspenden E.V</h1>
             <p>Wir sind ein Verein der sich der Organisation und Logistik von Kleiderspenen verschrieben hat.</p>
+            <h2>Anschrift der Geschäftststelle</h2>
+
         </Container>
     );
 }
