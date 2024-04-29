@@ -81,7 +81,7 @@ export default function Formular() {
 
     //Methoden die eine Eingabe im Formular verarbeiten
     const handleSelectChangeAnrede = (e) => setAnrede(e.target.value);
-    const handleSelectChangeKriesengebiet = (e) => setSpendengebiet(e.target.value);
+    const handleSelectChangeKrisenregion = (e) => setSpendengebiet(e.target.value);
     const handleTextChangeVorname = (e) => setVorname(e.target.value);
     const handleTextChangeNachname = (e) => setNachname(e.target.value);
     const handleTextChangeStrasse = (e) => setStrasse(e.target.value);
@@ -344,7 +344,7 @@ export default function Formular() {
             <Form noValidate onSubmit={handleSubmit}>
                 <Row>
                     <Form.Group className="mb-2" as={Col} md="4" controlId="abholmethode">
-                        <Form.Label>Wie möchtest du Spenden?</Form.Label>
+                        <Form.Label>Wie möchten Sie Spenden?</Form.Label>
                         <Form.Select value={abholmethode} onChange={handleSelectChangeAbholmethode}>
                             <option>Bitte wählen</option>
                             <option value="1">Abholung durch Sammelfahrzeug</option>
@@ -436,7 +436,7 @@ export default function Formular() {
                                     <Row>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="spendengebiet1">
                                             <Form.Label>Krisengebiet</Form.Label>
-                                            <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
+                                            <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKrisenregion} >
                                                 <option value="0">Bitte wählen</option>
                                                 <option value="1">Ukraine</option>
                                                 <option value="2">Israel</option>
@@ -518,7 +518,7 @@ export default function Formular() {
                                     <Row>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="spendengebiet2">
                                             <Form.Label>Krisengebiet</Form.Label>
-                                            <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKriesengebiet} >
+                                            <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKrisenregion} >
                                                 <option value="0">Bitte wählen</option>
                                                 <option value="1">Ukraine</option>
                                                 <option value="2">Israel</option>

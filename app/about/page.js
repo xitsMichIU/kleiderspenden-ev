@@ -6,15 +6,52 @@ import React from "react"
 
 //Importiert die CSS Datei
 import "/app/style.css"
-import { Container } from "react-bootstrap";
 
-export default function About() {
+import { Container, Row, Col, Card } from 'react-bootstrap';
+
+function About() {
     return (
-        <Container fluid>
-            <h1>Kleiderspenden E.V</h1>
-            <p>Wir sind ein Verein der sich der Organisation und Logistik von Kleiderspenen verschrieben hat.</p>
-            <h2>Anschrift der Geschäftststelle</h2>
+        <>
+            <Container fluid>
+                <Row>
+                    <Col>
+                        <h1>Vereinsgeschichte</h1>
+                        <p>In der Stadt Singen am Hohentwiel beschlossen in den 1960er einige Bürgerinnen und Bürger, einen Kleiderspendenverein ins Leben zu rufen, um Bedürftigen in der Region zu helfen. Nachdem der Verein sich etabliert hatte, wurde das Einsatzgebiet auf Krisenregionen weltweit ausgeweitet.</p>
+                    </Col>
+                </Row>
 
-        </Container>
+                <Row className="mb-3">
+                    <Col md={{ span: 6, offset: 0 }}>
+                        <Card>
+                            <Card.Body>
+                                <h3>Anschrift der Geschäftsstelle</h3>
+                                <Card.Text>
+                                    Kleiderspenden e.V. <br />
+                                    Schaffhauser Str. 60 <br />
+                                    78224 Singen am Hohentwiel
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+
+                <Row className="mb-3">
+                    <Col md={{ span: 6, offset: 0 }}>
+                        <Card>
+                            <Card.Body>
+                                <h3>Öffnungszeiten:</h3>
+                                <Card.Text>
+                                    Montag - Freitag: 9:00 - 17:00 Uhr <br />
+                                    Samstag: 9:00 - 18:00 Uhr <br />
+                                    Sonntag: Geschlossen
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+        </>
     );
 }
+
+export default About;

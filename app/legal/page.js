@@ -15,9 +15,9 @@ export default function Imprint() {
         <Container fluid>
             <h1>Impressum</h1>
             <p><strong>Organisationsname:</strong> Kleiderspenden E.V</p>
-            <p><strong>Adresse:</strong> August Ruf Straße 12, 78224 Singen Hohentwiel</p>
+            <p><strong>Adresse:</strong> Schaffhauser Str. 60, 78224 Singen am Hohentwiel</p>
             <p><strong>Telefon:</strong> +49 123 456789</p>
-            <p><strong>E-Mail:</strong> info@kleiderspendenSingen.org</p>
+            <p><strong>E-Mail:</strong> info@kleiderspenden.org</p>
             <p><strong>Vertretungsberechtigte Personen:</strong> Michael Geigges (Geschäftsführer)</p>
             <p><strong>Registergericht:</strong> Amtsgericht Singen</p>
             <p><strong>Registernummer:</strong> HRB12345</p>

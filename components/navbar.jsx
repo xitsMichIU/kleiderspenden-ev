@@ -13,8 +13,8 @@ export default function Navigation() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/donate">Kleidung Spenden</Nav.Link>
+                    <Nav.Link href="/">Startseite</Nav.Link>
+                    <Nav.Link href="/donate">Spenden</Nav.Link>
                     <Nav.Link href="/about">Über uns</Nav.Link>
                 </Nav>
             </Navbar.Collapse>

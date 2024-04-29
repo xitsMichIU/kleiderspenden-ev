@@ -15,11 +15,11 @@ export default function Donate() {
     return (
         <Container fluid>
             <h1>Spenden Sie jetzt!</h1>
-            <p>Sie benötigten eine Anleitung?</p>
+            <p>Benötigen Sie eine Anleitung?</p>
             <div className="mb-2">
                 <Manual />
             </div>
-            <h3 >Spende hier Registrieren</h3>
+            <h3 >Hier registrieren, um zu spenden</h3>
             <Formular />
         </Container >
     );
