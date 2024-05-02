@@ -1,30 +1,30 @@
-//Das Formular wird als client Komponente behandelt
+//Das Formular wird als client Komponente behandelt.
 'use client'
 
-//Import der benötigten React Methoden
+//Import der benötigten React Methoden.
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-//Import der benötigten React-Bootstrap Komponenten
+//Import der benötigten React-Bootstrap Komponenten.
 import { Button, Col, Form, Row } from 'react-bootstrap';
 
 //Import eigener Komponenten
 import Clothes from './clothes';
 
-//Formular für das Registieren einer Kleiderspende
+//Formular für das registrieren einer Kleiderspende.
 export default function Formular() {
 
-    //Auswahl der Abholmethode, default Wert wird auf 0 für "Bitte wählen" festgelegt
+    //Auswahl der Abholmethode, default Wert wird auf 0 für "Bitte wählen" festgelegt.
     const [abholmethode, setAbholmethode] = useState(0);
 
     //Funktion die den Wechsel der Abholmethode behandelt.
     const handleSelectChangeAbholmethode = (e) => {
 
-        //Bei einem Wechsel der Methode wird der Wert des Auswahlfeldes aktuallisiert
+        //Bei einem Wechsel der Methode wird der Wert des Auswahlfeldes aktualisiert.
         setAbholmethode(e.target.value);
 
         //Wird die Methode gewechselt müssen bestehende Warnungen zurückgesetzt werden.
-        setCustomValidationSpendengebiet('custom-select');
+        setCustomValidationKrisenregion('custom-select');
         setCustomValidationVorname('custom-select');
         setCustomValidationNachname('custom-select');
         setCustomValidationStrasse('custom-select');
@@ -32,13 +32,13 @@ export default function Formular() {
         setCustomValidationPLZ('custom-select');
         setCustomValidationOrt('custom-select');
         setCustomValidationAGB('custom-select');
-        setCustomValidationClothesCount('custom-select');
+        setCustomValidationAnzahlKleider('custom-select');
         setCustomValidationAnrede('custom-select');
         setCustomValidationEmail('custom-select');
-        setCustomValidationPhone('custom-select');
+        setCustomValidationTelefonnummer('custom-select');
 
-        //Die Variablen bei einem Wechsel ebenfalls zurückgesetzt
-        setSpendengebiet("");
+        //Die Variablen bei einem Wechsel ebenfalls zurückgesetzt.
+        setKrisenregion("");
         setVorname("");
         setNachname("");
         setStrasse("");
@@ -46,42 +46,43 @@ export default function Formular() {
         setPLZ("");
         setOrt("");
         setAGB(false);
-        setSelectedClothes("");
+
+        setGewaehlteKleidung("");
         setAnrede("");
         setEmail("");
-        setPhone("");
+        setTelefonnummer("");
     };
 
-    //Use State Methoden der Variablen aller Felder 
+    //Use State Methoden der Variablen aller Felder.
     const [anrede, setAnrede] = useState("");
-    const [spendengebiet, setSpendengebiet] = useState("");
+    const [spendengebiet, setKrisenregion] = useState("");
     const [vorname, setVorname] = useState("");
-    const [customValidationVorname, setCustomValidationVorname] = useState();
     const [nachname, setNachname] = useState("");
-    const [customValidationNachname, setCustomValidationNachname] = useState();
     const [strasse, setStrasse] = useState("");
     const [hausnummer, setHausnummer] = useState("");
     const [plz, setPLZ] = useState("");
     const [ort, setOrt] = useState("");
     const [agb, setAGB] = useState(false);
-    const [selectedClothes, setSelectedClothes] = useState([]);
-    const [phone, setPhone] = useState("");
+    const [gewaehlteKleidung, setGewaehlteKleidung] = useState([]);
+    const [telefonnummer, setTelefonnummer] = useState("");
     const [email, setEmail] = useState("");
 
-    const [customValidationSpendengebiet, setCustomValidationSpendengebiet] = useState();
+    const [customValidationVorname, setCustomValidationVorname] = useState();
+    const [customValidationNachname, setCustomValidationNachname] = useState();
+    const [customValidationKrisenregion, setCustomValidationKrisenregion] = useState();
     const [customValidationAnrede, setCustomValidationAnrede] = useState();
     const [customValidationStrasse, setCustomValidationStrasse] = useState();
     const [customValidationHausnummer, setCustomValidationHausnummer] = useState();
     const [customValidationPLZ, setCustomValidationPLZ] = useState();
     const [customValidationOrt, setCustomValidationOrt] = useState();
     const [customValidationAGB, setCustomValidationAGB] = useState();
-    const [customValidationClothesCount, setCustomValidationClothesCount] = useState();
-    const [customValidationPhone, setCustomValidationPhone] = useState();
+    const [customValidationAnzahlKleider, setCustomValidationAnzahlKleider] = useState();
+    const [customValidationTelefonnummer, setCustomValidationTelefonnummer] = useState();
     const [customValidationEmail, setCustomValidationEmail] = useState();
 
-    //Methoden die eine Eingabe im Formular verarbeiten
+    //Methoden die eine Eingabe im Formular verarbeiten.
     const handleSelectChangeAnrede = (e) => setAnrede(e.target.value);
-    const handleSelectChangeKrisenregion = (e) => setSpendengebiet(e.target.value);
+    const handleSelectChangeKrisenregion = (e) => setKrisenregion(e.target.value);
     const handleTextChangeVorname = (e) => setVorname(e.target.value);
     const handleTextChangeNachname = (e) => setNachname(e.target.value);
     const handleTextChangeStrasse = (e) => setStrasse(e.target.value);
@@ -89,34 +90,34 @@ export default function Formular() {
     const handleTextChangePLZ = (e) => setPLZ(e.target.value);
     const handleTextChangeOrt = (e) => setOrt(e.target.value);
     const handleCheckBoxChangeAGB = (e) => setAGB(e.target.checked);
-    const handleClothesSelection = (selectedItems) => setSelectedClothes(selectedItems);
-    const handleTextChangePhone = (e) => setPhone(e.target.value);
+    const handleKleidungsAuswahl = (uebergebeneKleidung) => setGewaehlteKleidung(uebergebeneKleidung);
+    const handleTextChangeTelefonnummer = (e) => setTelefonnummer(e.target.value);
     const handleTextChangeEmail = (e) => setEmail(e.target.value);
 
-    //Router für die Navigation auf die Übersichtsseite
+    //Router für die Navigation auf die Übersichtsseite.
     const router = useRouter();
 
-    //Funktion zur Validierung der Formulardaten
+    //Funktion zur Validierung der Formulardaten.
     const handleSubmit = (event) => {
 
-        //Variable Error dient zur feststellung, ob bei einem der Felder Daten fehlen / falsch sind
+        //Variable Error dient zur feststellung, ob bei einem der Felder Daten fehlen / falsch sind.
         var error = false;
 
-        //Validierung der Felder wenn die Abholmethode 1 (Abholung durch Sammelfahrzeug) ausgewählt wurde
+        //Validierung der Felder wenn die Abholmethode 1 (Abholung durch Sammelfahrzeug) ausgewählt wurde.
         if (abholmethode === "1") {
 
-            //Validerung des Feldes Spendengebiet
+            //Validierung des Feldes Krisenregion.
             if (spendengebiet === "") {
-                setCustomValidationSpendengebiet('custom-select is-invalid');
+                setCustomValidationKrisenregion('custom-select is-invalid');
                 error = true;
             } else if (spendengebiet === "0") {
-                setCustomValidationSpendengebiet('custom-select is-invalid');
+                setCustomValidationKrisenregion('custom-select is-invalid');
                 error = true;
             } else {
-                setCustomValidationSpendengebiet('custom-select is-valid');
+                setCustomValidationKrisenregion('custom-select is-valid');
             }
 
-            //Validerung des Feldes Anrede
+            //Validierung des Feldes Anrede.
             if (anrede === "") {
                 setCustomValidationAnrede('custom-select is-invalid');
                 error = true;
@@ -127,7 +128,7 @@ export default function Formular() {
                 setCustomValidationAnrede('custom-select is-valid');
             }
 
-            //Validerung des Feldes Norname
+            //Validierung des Feldes Vorname.
             if (vorname === "") {
                 setCustomValidationVorname('custom-select is-invalid');
                 error = true;
@@ -135,7 +136,7 @@ export default function Formular() {
                 setCustomValidationVorname('custom-select is-valid');
             }
 
-            //Validerung des Feldes Nachname
+            //Validierung des Feldes Nachname.
             if (nachname === "") {
                 setCustomValidationNachname('custom-select is-invalid');
                 error = true;
@@ -143,7 +144,7 @@ export default function Formular() {
                 setCustomValidationNachname('custom-select is-valid');
             }
 
-            //Validerung des Feldes Straße
+            //Validierung des Feldes Straße.
             if (strasse === "") {
                 setCustomValidationStrasse('custom-select is-invalid');
                 error = true;
@@ -151,7 +152,7 @@ export default function Formular() {
                 setCustomValidationStrasse('custom-select is-valid');
             }
 
-            //Validerung des Feldes Hausnummer
+            //Validierung des Feldes Hausnummer.
             if (hausnummer === "") {
                 setCustomValidationHausnummer('custom-select is-invalid');
                 error = true;
@@ -159,25 +160,25 @@ export default function Formular() {
                 setCustomValidationHausnummer('custom-select is-valid');
             }
 
-            //Validerung des Feldes PLZ
+            //Validierung des Feldes PLZ.
             if (plz === "") {
                 setCustomValidationPLZ('custom-select is-invalid');
                 error = true;
             } else if (plz !== "") {
 
-                //Überprüft ob der Text mit "78" beginnt
+                //Überprüft ob der Text mit "78" beginnt.
                 const beginntMit78 = plz.startsWith("78");
 
-                //Überprüft, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt
+                //Überprüft, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt.
                 const nichtLaengerAls5 = plz.length <= 5;
 
-                //Überprüft, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt
+                //Überprüft, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt.
                 const nichtKleinerAls5 = plz.length >= 5;
 
-                //Überprüft, ob alle Zeichen im Text Zahlen von 1 bis 9 sind
+                //Überprüft, ob alle Zeichen im Text Zahlen von 1 bis 9 sind.
                 const nurZahlen1Bis9 = /^[1-9]+$/.test(plz);
 
-                //Wenn eine  der Bedingungen falsch ist wird ein Fehler angezeigt
+                //Wenn eine der Bedingungen falsch ist wird ein Fehler angezeigt.
                 if (beginntMit78 && nichtLaengerAls5 && nichtKleinerAls5 && nurZahlen1Bis9) {
                     setCustomValidationPLZ('custom-select is-valid');
                 } else {
@@ -186,7 +187,7 @@ export default function Formular() {
                 }
             }
 
-            //Validerung des Feldes Ort
+            //Validierung des Feldes Ort.
             if (ort === "") {
                 setCustomValidationOrt('custom-select is-invalid');
                 error = true;
@@ -194,7 +195,7 @@ export default function Formular() {
                 setCustomValidationOrt('custom-select is-valid');
             }
 
-            //Validerung des Feldes AGB
+            //Validierung des Feldes AGB.
             if (agb === false) {
                 setCustomValidationAGB('custom-select is-invalid');
                 error = true;
@@ -202,24 +203,23 @@ export default function Formular() {
                 setCustomValidationAGB('custom-select is-valid');
             }
 
-            //Validerung des Feldes Kleiderauswahl
-            if (selectedClothes.length == 0) {
-                setCustomValidationClothesCount('custom-select is-invalid');
+            //Validierung des Feldes Kleiderauswahl.
+            if (gewaehlteKleidung.length == 0) {
+                setCustomValidationAnzahlKleider('custom-select is-invalid');
                 error = true;
             } else {
-                setCustomValidationClothesCount('custom-select is-valid');
+                setCustomValidationAnzahlKleider('custom-select is-valid');
             }
 
-            //Validerung des Feldes Telefonnummer
-            if (phone == "") {
-                setCustomValidationPhone('custom-select is-invalid');
+            //Validierung des Feldes Telefonnummer.
+            if (telefonnummer == "") {
+                setCustomValidationTelefonnummer('custom-select is-invalid');
                 error = true;
             } else {
-                setCustomValidationPhone('custom-select is-valid');
+                setCustomValidationTelefonnummer('custom-select is-valid');
             }
 
-            //Validerung des Feldes Email
-
+            //Validierung des Feldes Email.
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
             if (emailRegex.test(email) === false) {
@@ -229,17 +229,17 @@ export default function Formular() {
                 setCustomValidationEmail('custom-select is-valid');
             }
 
-            //Wurde kein Fehler gefunden, wird das Formular abgesendet
+            //Wurde kein Fehler gefunden, wird das Formular abgesendet.
             if (error) {
-                //Verhindern, dass das Formular Abgesendet werden kann
+                //Verhindert, dass das Formular Abgesendet werden kann.
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-                //Verhindern, dass das Formular neu geladen wird
+                //Verhindern, dass das Formular neu geladen wird.
                 event.preventDefault();
 
-                //URL zur Übergabe der Variablen wird erstellt
-                const url = `/donate/summary?&anrede=${anrede}&vorname=${vorname}&nachname=${nachname}&strasse=${strasse}&hausnummer=${hausnummer}&plz=${plz}&ort=${ort}&spendegebiet=${spendengebiet}&kleidung=${selectedClothes}&abholmethode=${abholmethode}&email=${email}&phone=${phone}`;
+                //URL zur Übergabe der Variablen wird erstellt.
+                const url = `/donate/summary?&anrede=${anrede}&vorname=${vorname}&nachname=${nachname}&strasse=${strasse}&hausnummer=${hausnummer}&plz=${plz}&ort=${ort}&spendegebiet=${spendengebiet}&kleidung=${gewaehlteKleidung}&abholmethode=${abholmethode}&email=${email}&telefonnummer=${telefonnummer}`;
 
                 //Weiterleitung zur Übersichtsseite
                 router.push(url);
@@ -247,10 +247,10 @@ export default function Formular() {
             }
         }
 
-        //Validerung der Felder wenn die Abholmethode den Wert 2 hat (Abgabe an Geschäftsstelle)
+        //Validierung der Felder wenn die Abholmethode den Wert 2 hat (Abgabe an Geschäftsstelle).
         else if (abholmethode === "2") {
 
-            //Validerung des Feldes Anrede
+            //Validierung des Feldes Anrede.
             if (anrede === "") {
                 setCustomValidationAnrede('custom-select is-invalid');
                 error = true;
@@ -261,7 +261,7 @@ export default function Formular() {
                 setCustomValidationAnrede('custom-select is-valid');
             }
 
-            //Validerung des Feldes Vorname
+            //Validierung des Feldes Vorname.
             if (vorname === "") {
                 setCustomValidationVorname('custom-select is-invalid');
                 error = true;
@@ -269,7 +269,7 @@ export default function Formular() {
                 setCustomValidationVorname('custom-select is-valid');
             }
 
-            //Validerung des Feldes Nachname
+            //Validierung des Feldes Nachname.
             if (nachname === "") {
                 setCustomValidationNachname('custom-select is-invalid');
                 error = true;
@@ -277,26 +277,26 @@ export default function Formular() {
                 setCustomValidationNachname('custom-select is-valid');
             }
 
-            //Validerung des Feldes Spendengebiet
+            //Validierung des Feldes Krisenregion.
             if (spendengebiet === "") {
-                setCustomValidationSpendengebiet('custom-select is-invalid');
+                setCustomValidationKrisenregion('custom-select is-invalid');
                 error = true;
             } else if (spendengebiet === "0") {
-                setCustomValidationSpendengebiet('custom-select is-invalid');
+                setCustomValidationKrisenregion('custom-select is-invalid');
                 error = true;
             } else {
-                setCustomValidationSpendengebiet('custom-select is-valid');
+                setCustomValidationKrisenregion('custom-select is-valid');
             }
 
-            //Validerung des Feldes Kleiderauswahl
-            if (selectedClothes.length == 0) {
-                setCustomValidationClothesCount('custom-select is-invalid');
+            //Validierung des Feldes Kleiderauswahl.
+            if (gewaehlteKleidung.length == 0) {
+                setCustomValidationAnzahlKleider('custom-select is-invalid');
                 error = true;
             } else {
-                setCustomValidationClothesCount('custom-select is-valid');
+                setCustomValidationAnzahlKleider('custom-select is-valid');
             }
 
-            //Validerung des Feldes AGB
+            //Validierung des Feldes AGB.
             if (agb === false) {
                 setCustomValidationAGB('custom-select is-invalid');
                 error = true;
@@ -304,15 +304,15 @@ export default function Formular() {
                 setCustomValidationAGB('custom-select is-valid');
             }
 
-            //Validerung des Feldes Telefonnummer
-            if (phone == "") {
-                setCustomValidationPhone('custom-select is-invalid');
+            //Validierung des Feldes Telefonnummer.
+            if (telefonnummer == "") {
+                setCustomValidationTelefonnummer('custom-select is-invalid');
                 error = true;
             } else {
-                setCustomValidationPhone('custom-select is-valid');
+                setCustomValidationTelefonnummer('custom-select is-valid');
             }
 
-            //Validerung des Feldes Email
+            //Validierung des Feldes Email.
             if (email == "") {
                 setCustomValidationEmail('custom-select is-invalid');
                 error = true;
@@ -320,25 +320,25 @@ export default function Formular() {
                 setCustomValidationEmail('custom-select is-valid');
             }
 
-            //Wurde ein Fehler gefunden wird, wird das Formular nicht abgesendet
+            //Wurde ein Fehler gefunden wird, wird das Formular nicht abgesendet.
             if (error) {
-                //Verhindern, dass das Formular Abgesendet werden kann
+                //Verhindern, dass das Formular Abgesendet werden kann.
                 event.preventDefault();
                 event.stopPropagation();
             } else {
-                //Verhindern, dass das Formular neu geladen wird
+                //Verhindern, dass das Formular neu geladen wird.
                 event.preventDefault();
 
-                //Erstellen der URL die alle Variablen enthält
-                const url = `/donate/summary?&anrede=${anrede}&vorname=${vorname}&nachname=${nachname}&spendegebiet=${spendengebiet}&kleidung=${selectedClothes}&abholmethode=${abholmethode}&email=${email}&phone=${phone}`;
+                //Erstellen der URL die alle Variablen enthält.
+                const url = `/donate/summary?&anrede=${anrede}&vorname=${vorname}&nachname=${nachname}&spendegebiet=${spendengebiet}&kleidung=${gewaehlteKleidung}&abholmethode=${abholmethode}&email=${email}&telefonnummer=${telefonnummer}`;
 
-                //Weiterleitung zur Übersichtsseite
+                //Weiterleitung zur Übersichtsseite.
                 router.push(url);
             }
         }
     };
 
-    //Formular erstellung
+    //Formular Erstellung
     return (
         <>
             <Form noValidate onSubmit={handleSubmit}>
@@ -360,7 +360,7 @@ export default function Formular() {
                             return (
                                 <>
                                     <Row>
-                                        <Form.Group className="mb-2" as={Col} md="2" controlId="geschlecht">
+                                        <Form.Group className="mb-2" as={Col} md="2" controlId="anrede">
                                             <Form.Label>Anrede</Form.Label>
                                             <Form.Select className={customValidationAnrede} value={anrede} onChange={handleSelectChangeAnrede}>
                                                 <option value="0">Bitte wählen</option>
@@ -427,7 +427,7 @@ export default function Formular() {
                                         </Form.Group>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="telefon">
                                             <Form.Label>Telefonnummer</Form.Label>
-                                            <Form.Control className={customValidationPhone} value={phone} onChange={handleTextChangePhone} type="text" placeholder="Telefonnummer" />
+                                            <Form.Control className={customValidationTelefonnummer} value={telefonnummer} onChange={handleTextChangeTelefonnummer} type="text" placeholder="Telefonnummer" />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
@@ -435,21 +435,21 @@ export default function Formular() {
 
                                     <Row>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="spendengebiet1">
-                                            <Form.Label>Krisengebiet</Form.Label>
-                                            <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKrisenregion} >
+                                            <Form.Label>Krisenregion</Form.Label>
+                                            <Form.Select className={customValidationKrisenregion} value={spendengebiet} onChange={handleSelectChangeKrisenregion} >
                                                 <option value="0">Bitte wählen</option>
                                                 <option value="1">Ukraine</option>
                                                 <option value="2">Israel</option>
-                                                <option value="3">Malaisya</option>
+                                                <option value="3">Malaysia</option>
                                             </Form.Select>
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="kleidungsauswahl1">
-                                            <Clothes onClothesSelection={handleClothesSelection} />
-                                            {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
+                                            <Clothes onClothesSelection={handleKleidungsAuswahl} />
+                                            {/*Read only Feld das den aktuellen Wert der Ausgewählten Kleider Enthält*/}
                                             {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert das Arrays mindestens 1 ist*/}
-                                            <Form.Control style={{ display: 'none' }} className={customValidationClothesCount} value={selectedClothes.length} readOnly />
+                                            <Form.Control style={{ display: 'none' }} className={customValidationAnzahlKleider} value={gewaehlteKleidung.length} readOnly />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
@@ -472,7 +472,7 @@ export default function Formular() {
                             return (
                                 <>
                                     <Row>
-                                        <Form.Group className="mb-2" as={Col} md="2" controlId="geschlecht">
+                                        <Form.Group className="mb-2" as={Col} md="2" controlId="anrede">
                                             <Form.Label>Anrede</Form.Label>
                                             <Form.Select className={customValidationAnrede} value={anrede} onChange={handleSelectChangeAnrede}>
                                                 <option value="0">Bitte wählen</option>
@@ -509,7 +509,7 @@ export default function Formular() {
                                         </Form.Group>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="telefon">
                                             <Form.Label>Telefonnummer</Form.Label>
-                                            <Form.Control className={customValidationPhone} value={phone} onChange={handleTextChangePhone} type="text" placeholder="Telefonnummer" />
+                                            <Form.Control className={customValidationTelefonnummer} value={telefonnummer} onChange={handleTextChangeTelefonnummer} type="text" placeholder="Telefonnummer" />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
@@ -517,21 +517,24 @@ export default function Formular() {
 
                                     <Row>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="spendengebiet2">
-                                            <Form.Label>Krisengebiet</Form.Label>
-                                            <Form.Select className={customValidationSpendengebiet} value={spendengebiet} onChange={handleSelectChangeKrisenregion} >
+                                            <Form.Label>Krisenregion</Form.Label>
+                                            <Form.Select className={customValidationKrisenregion} value={spendengebiet} onChange={handleSelectChangeKrisenregion} >
                                                 <option value="0">Bitte wählen</option>
                                                 <option value="1">Ukraine</option>
                                                 <option value="2">Israel</option>
-                                                <option value="3">Malaisya</option>
+                                                <option value="3">Malaysia</option>
                                             </Form.Select>
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group className="mb-2" as={Col} md="4" controlId="kleidungsauswahl2">
-                                            <Clothes onClothesSelection={handleClothesSelection} />
-                                            {/*Read only Feld das den akutellen Wert der Ausgewählten Kleider Enthält*/}
+                                            {/* Die handleKleidungsAuswahl-Funktion wird als Prop an die Kleidungskomponente übergeben. 
+                                            Sobald sich die Kleidungsauswahl ändert, wird mit useEffect in der Kleidungskomponente die Prop aufgerufen und die Funktion "handleKleidungsAuswahl" ausgeführt, 
+                                            welche die Variable "gewaehlteKleidung" mit den neuesten Werten aktualisiert. */}
+                                            <Clothes onClothesSelection={handleKleidungsAuswahl} />
+                                            {/*Read only Feld das den aktuellen Wert der Ausgewählten Kleider Enthält*/}
                                             {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
-                                            <Form.Control style={{ display: 'none' }} className={customValidationClothesCount} value={selectedClothes.length} readOnly />
+                                            <Form.Control style={{ display: 'none' }} className={customValidationAnzahlKleider} value={gewaehlteKleidung.length} readOnly />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                         </Form.Group>
                                     </Row>

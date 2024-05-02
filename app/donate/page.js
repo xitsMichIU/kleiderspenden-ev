@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 import "/app/style.css"
 
 //Importiert die eigenen Komponenten
-import Formular from "@/components/from";
+import Formular from "@/components/form";
 import Manual from "@/components/manual";
 
 export default function Donate() {

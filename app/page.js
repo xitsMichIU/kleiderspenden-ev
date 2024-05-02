@@ -20,7 +20,9 @@ export default function Home() {
       <Image className="mb-4" src="img/Kleider.jpeg" alt="Kleiderschrank" fluid />
       <h1>Willkommen beim Kleiderspenden e.V.</h1>
       <p>Wir sind ein gemeinnütziger Verein im Hegau und nehmen Kleiderspenden entgegen.</p>
-      <Row md={2} className="g-4 mb-4">
+
+      {/*xs stellt sicher das die Karten untereinander angezeigt werden*/}
+      <Row xs={1} md={2} className="g-4 mb-4">
         <Col>
           <Card>
             <Card.Body>
@@ -44,6 +46,7 @@ export default function Home() {
           </Card>
         </Col>
       </Row>
+
 
     </Container >
   );

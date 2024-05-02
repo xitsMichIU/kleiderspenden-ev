@@ -15,7 +15,7 @@ export const metadata = {
   description: "Webseite zur Organisation von Kleiderspenden",
 };
 
-//React funktion die das RootLayout rendert
+//React Funktion die das RootLayout rendert
 export default function RootLayout({ children }) {
   return (
     <html lang="de">
