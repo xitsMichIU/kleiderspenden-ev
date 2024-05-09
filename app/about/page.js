@@ -20,8 +20,8 @@ function About() {
                     </Col>
                 </Row>
 
-                <Row className="mb-3">
-                    <Col md={{ span: 6, offset: 0 }}>
+                <Row>
+                    <Col xs={12} lg={6} className="mb-3">
                         <Card>
                             <Card.Body>
                                 <h3>Anschrift der Geschäftsstelle</h3>
@@ -33,10 +33,8 @@ function About() {
                             </Card.Body>
                         </Card>
                     </Col>
-                </Row>
 
-                <Row className="mb-3">
-                    <Col md={{ span: 6, offset: 0 }}>
+                    <Col xs={12} lg={6} className="mb-3">
                         <Card>
                             <Card.Body>
                                 <h3>Öffnungszeiten:</h3>

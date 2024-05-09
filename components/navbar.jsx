@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 //Komponente für die Navigation
 export default function Navigation() {
     return (
-        <Navbar id="navigation" collapseOnSelect expand="lg" data-bs-theme="light" className="mb-2">
+        <Navbar id="navigation" collapseOnSelect expand="lg" data-bs-theme="light">
             <Navbar.Brand href="/"><img src="/img/logo.svg" width="30" height="30" className="d-inline-block align-top" alt="Kleidungsstück" /> </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">

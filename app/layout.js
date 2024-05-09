@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="de">
       <head>
         {/*Legt das Icon in der Menüleiste Fest*/}
-        <link rel="icon" href="img/logo.svg"/>
+        <link rel="icon" href="img/logo.svg" />
       </head>
       <body>
         {/*Navigationskomponente Einfügen*/}

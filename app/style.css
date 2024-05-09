@@ -10,3 +10,8 @@ body {
 #footer {
     background-color: lightblue;
 }
+
+/*Sorgt dafür das das Bild keinen Rand auf der Startseite hat */
+#main {
+    padding: 0em;
+}

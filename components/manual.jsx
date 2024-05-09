@@ -3,7 +3,7 @@ import { Accordion, Row, Col } from 'react-bootstrap';
 
 export default function Manual() {
     return (
-        <Accordion defaultActiveKey="0" as={Col} md="8">
+        <Accordion defaultActiveKey="0" as={Col} xs={12} md={12} lg={12}>
             <Accordion.Item eventKey="1">
                 <Accordion.Header>Anleitung Ausklappen</Accordion.Header>
                 <Accordion.Body>
