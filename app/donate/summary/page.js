@@ -116,7 +116,7 @@ export default function Summary() {
                                     <ul>
                                         <li><strong>Spendengebiet:</strong> {spendengebietText}</li>
                                         <li><strong>Gespendete Kleidung:</strong> {kleidung}</li>
-                                        <li><strong>Zeitpunkt der Registrierung:</strong> {currentDateTime.toLocaleString()}</li>
+                                        <li><strong>Zeitpunkt der Abgaberegistrierung:</strong> {currentDateTime.toLocaleString()}</li>
                                     </ul>
                                 </Col>
                             </Row>
