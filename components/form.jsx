@@ -177,7 +177,7 @@ export default function Formular() {
                 const nichtKleinerAls5 = plz.length >= 5;
 
                 //Überprüft, ob alle Zeichen im Text Zahlen von 1 bis 9 sind.
-                const nurZahlen1Bis9 = /^[1-9]+$/.test(plz);
+                const nurZahlen1Bis9 = /^[0-9]+$/.test(plz);
 
                 //Wenn eine der Bedingungen falsch ist wird ein Fehler angezeigt.
                 if (beginntMit78 && nichtLaengerAls5 && nichtKleinerAls5 && nurZahlen1Bis9) {
