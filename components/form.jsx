@@ -345,7 +345,7 @@ export default function Formular() {
             <Form noValidate onSubmit={handleSubmit}>
                 <Row>
                     <Form.Group className="mb-2" as={Col} xs={12} md={6} lg={6} controlId="abholmethode">
-                        <Form.Label>Wie möchten Sie Spenden?</Form.Label>
+                        <Form.Label>Wie möchten Sie spenden?</Form.Label>
                         <Form.Select value={abholmethode} onChange={handleSelectChangeAbholmethode}>
                             <option>Bitte wählen</option>
                             <option value="1">Abholung durch Sammelfahrzeug</option>
@@ -423,8 +423,7 @@ export default function Formular() {
                                         <Form.Group className="mb-2" as={Col} xs={12} md={8} lg={8} controlId="email">
                                             <Form.Label>Email Adresse</Form.Label>
                                             <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="email" placeholder="Email" />
-                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
+                                            xf
                                         </Form.Group>
                                         <Form.Group className="mb-2" as={Col} xs={12} md={4} lg={4} controlId="telefon">
                                             <Form.Label>Telefonnummer</Form.Label>

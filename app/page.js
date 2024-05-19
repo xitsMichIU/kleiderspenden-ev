@@ -29,11 +29,11 @@ export default function Home() {
           <Col>
             <Card>
               <Card.Body>
-                <Card.Title>Jetzt Spenden!</Card.Title>
+                <Card.Title>Jetzt spenden!</Card.Title>
                 <Card.Text>
                   Helfen Sie Bedürftigen und spenden Sie.
                 </Card.Text>
-                <Button href="/donate" variant="primary">Jetzt Spenden</Button>
+                <Button href="/donate" variant="primary">Jetzt spenden</Button>
               </Card.Body>
             </Card>
           </Col>
