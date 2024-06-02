@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         </nav>
         {/*Basierend aus der Unterseite wird die Unterseite gerendert*/}
         <main className="main">
-          {/*Suspend wird benötigt um die Summary Page zu laden als Kind Komponente*/}
+          {/*Suspend wird benötigt um die Übersichtsseite Page zu laden*/}
           <Suspense>
             {children}
           </Suspense>

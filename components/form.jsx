@@ -31,7 +31,7 @@ export default function Formular() {
         setCustomValidationHausnummer('custom-select');
         setCustomValidationPLZ('custom-select');
         setCustomValidationOrt('custom-select');
-        setCustomValidationAGB('custom-select');
+        setCustomValidationDataPrivacy('custom-select');
         setCustomValidationAnzahlKleider('custom-select');
         setCustomValidationAnrede('custom-select');
         setCustomValidationEmail('custom-select');
@@ -45,7 +45,7 @@ export default function Formular() {
         setHausnummer("");
         setPLZ("");
         setOrt("");
-        setAGB(false);
+        setDataPrivacy(false);
 
         setGewaehlteKleidung("");
         setAnrede("");
@@ -62,7 +62,7 @@ export default function Formular() {
     const [hausnummer, setHausnummer] = useState("");
     const [plz, setPLZ] = useState("");
     const [ort, setOrt] = useState("");
-    const [agb, setAGB] = useState(false);
+    const [dataPrivacy, setDataPrivacy] = useState(false);
     const [gewaehlteKleidung, setGewaehlteKleidung] = useState([]);
     const [telefonnummer, setTelefonnummer] = useState("");
     const [email, setEmail] = useState("");
@@ -75,7 +75,7 @@ export default function Formular() {
     const [customValidationHausnummer, setCustomValidationHausnummer] = useState();
     const [customValidationPLZ, setCustomValidationPLZ] = useState();
     const [customValidationOrt, setCustomValidationOrt] = useState();
-    const [customValidationAGB, setCustomValidationAGB] = useState();
+    const [customValidationDataPrivacy, setCustomValidationDataPrivacy] = useState();
     const [customValidationAnzahlKleider, setCustomValidationAnzahlKleider] = useState();
     const [customValidationTelefonnummer, setCustomValidationTelefonnummer] = useState();
     const [customValidationEmail, setCustomValidationEmail] = useState();
@@ -89,7 +89,7 @@ export default function Formular() {
     const handleTextChangeHausnummer = (e) => setHausnummer(e.target.value);
     const handleTextChangePLZ = (e) => setPLZ(e.target.value);
     const handleTextChangeOrt = (e) => setOrt(e.target.value);
-    const handleCheckBoxChangeAGB = (e) => setAGB(e.target.checked);
+    const handleCheckBoxChangeDataPrivacy = (e) => setDataPrivacy(e.target.checked);
     const handleKleidungsAuswahl = (uebergebeneKleidung) => setGewaehlteKleidung(uebergebeneKleidung);
     const handleTextChangeTelefonnummer = (e) => setTelefonnummer(e.target.value);
     const handleTextChangeEmail = (e) => setEmail(e.target.value);
@@ -196,12 +196,12 @@ export default function Formular() {
                 setCustomValidationOrt('custom-select is-valid');
             }
 
-            //Validierung des Feldes AGB.
-            if (agb === false) {
-                setCustomValidationAGB('custom-select is-invalid');
+            //Validierung des Feldes DataPrivacy.
+            if (dataPrivacy === false) {
+                setCustomValidationDataPrivacy('custom-select is-invalid');
                 error = true;
             } else {
-                setCustomValidationAGB('custom-select is-valid');
+                setCustomValidationDataPrivacy('custom-select is-valid');
             }
 
             //Validierung des Feldes Kleiderauswahl.
@@ -297,12 +297,12 @@ export default function Formular() {
                 setCustomValidationAnzahlKleider('custom-select is-valid');
             }
 
-            //Validierung des Feldes AGB.
-            if (agb === false) {
-                setCustomValidationAGB('custom-select is-invalid');
+            //Validierung des Feldes DataPrivacy.
+            if (dataPrivacy === false) {
+                setCustomValidationDataPrivacy('custom-select is-invalid');
                 error = true;
             } else {
-                setCustomValidationAGB('custom-select is-valid');
+                setCustomValidationDataPrivacy('custom-select is-valid');
             }
 
             //Validierung des Feldes Telefonnummer.
@@ -377,7 +377,8 @@ export default function Formular() {
                                     <Row>
                                         <Form.Group className="mb-2" as={Col} xs={12} md={6} lg={6} controlId="vorname">
                                             <Form.Label>Vorname</Form.Label>
-                                            <Form.Control className={customValidationVorname} value={vorname} onChange={handleTextChangeVorname} type="text" placeholder="Vorname" />
+                                            <Form.Control className={customValidationVorname} value={vorname}
+                                                onChange={handleTextChangeVorname} type="text" placeholder="Vorname" />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
@@ -423,7 +424,6 @@ export default function Formular() {
                                         <Form.Group className="mb-2" as={Col} xs={12} md={8} lg={8} controlId="email">
                                             <Form.Label>Email Adresse</Form.Label>
                                             <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="email" placeholder="Email" />
-                                            xf
                                         </Form.Group>
                                         <Form.Group className="mb-2" as={Col} xs={12} md={4} lg={4} controlId="telefon">
                                             <Form.Label>Telefonnummer</Form.Label>
@@ -456,8 +456,8 @@ export default function Formular() {
                                     </Row>
 
                                     <Row>
-                                        <Form.Group className="mb-2" controlId="agb1">
-                                            <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu." className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
+                                        <Form.Group className="mb-2" controlId="dataPrivacy1">
+                                            <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu." className={customValidationDataPrivacy} value={dataPrivacy} onChange={handleCheckBoxChangeDataPrivacy} />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
@@ -540,8 +540,8 @@ export default function Formular() {
                                     </Row>
 
                                     <Row>
-                                        <Form.Group className="mb-2" controlId="agb2">
-                                            <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu." className={customValidationAGB} value={agb} onChange={handleCheckBoxChangeAGB} />
+                                        <Form.Group className="mb-2" controlId="dataPrivacy2">
+                                            <Form.Check label="Ich stimme der Verarbeitung meiner Daten zu." className={customValidationDataPrivacy} value={dataPrivacy} onChange={handleCheckBoxChangeDataPrivacy} />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
