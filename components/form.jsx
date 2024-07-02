@@ -220,8 +220,8 @@ export default function Formular() {
                 setCustomValidationTelefonnummer('custom-select is-valid');
             }
 
-            //Validierung des Feldes Email.
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+            //Validierung des Feldes Email (Übernommen aus https://emailregex.com/index.html, last checked 02.07.2024)
+            const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
             if (emailRegex.test(email) === false) {
                 setCustomValidationEmail('custom-select is-invalid');
@@ -305,22 +305,6 @@ export default function Formular() {
                 setCustomValidationDataPrivacy('custom-select is-valid');
             }
 
-            //Validierung des Feldes Telefonnummer.
-            if (telefonnummer == "") {
-                setCustomValidationTelefonnummer('custom-select is-invalid');
-                error = true;
-            } else {
-                setCustomValidationTelefonnummer('custom-select is-valid');
-            }
-
-            //Validierung des Feldes Email.
-            if (email == "") {
-                setCustomValidationEmail('custom-select is-invalid');
-                error = true;
-            } else {
-                setCustomValidationEmail('custom-select is-valid');
-            }
-
             //Wurde ein Fehler gefunden wird, wird das Formular nicht abgesendet.
             if (error) {
                 //Verhindern, dass das Formular Abgesendet werden kann.
@@ -331,7 +315,7 @@ export default function Formular() {
                 event.preventDefault();
 
                 //Erstellen der URL die alle Variablen enthält.
-                const url = `/donate/summary?&anrede=${anrede}&vorname=${vorname}&nachname=${nachname}&spendengebiet=${spendengebiet}&kleidung=${gewaehlteKleidung}&abholmethode=${abholmethode}&email=${email}&telefonnummer=${telefonnummer}`;
+                const url = `/donate/summary?&anrede=${anrede}&vorname=${vorname}&nachname=${nachname}&spendengebiet=${spendengebiet}&kleidung=${gewaehlteKleidung}&abholmethode=${abholmethode}`;
 
                 //Weiterleitung zur Übersichtsseite.
                 router.push(url);
@@ -484,7 +468,7 @@ export default function Formular() {
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
                                     </Row>
-
+        
                                     <Row>
                                         <Form.Group className="mb-2" as={Col} xs={12} md={6} lg={6} controlId="vorname">
                                             <Form.Label>Vorname</Form.Label>
@@ -495,21 +479,6 @@ export default function Formular() {
                                         <Form.Group className="mb-2" as={Col} xs={12} md={6} lg={6} controlId="nachname">
                                             <Form.Label>Nachname</Form.Label>
                                             <Form.Control className={customValidationNachname} value={nachname} onChange={handleTextChangeNachname} type="text" placeholder="Nachname" />
-                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                        </Form.Group>
-                                    </Row>
-
-                                    <Row>
-                                        <Form.Group className="mb-2" as={Col} xs={12} md={8} lg={8} controlId="email">
-                                            <Form.Label>Email Adresse</Form.Label>
-                                            <Form.Control className={customValidationEmail} value={email} onChange={handleTextChangeEmail} type="email" placeholder="Email" />
-                                            <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
-                                        </Form.Group>
-                                        <Form.Group className="mb-2" as={Col} xs={12} md={4} lg={4} controlId="telefon">
-                                            <Form.Label>Telefonnummer</Form.Label>
-                                            <Form.Control className={customValidationTelefonnummer} value={telefonnummer} onChange={handleTextChangeTelefonnummer} type="text" placeholder="Telefonnummer" />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>

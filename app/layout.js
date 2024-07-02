@@ -9,19 +9,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css"
 import { Suspense } from "react";
 
-//Variable das die Metadaten für die Webseite Enthält
-export const metadata = {
-  title: "Kleiderspenden E.V",
-  description: "Webseite zur Organisation von Kleiderspenden",
-};
-
 //React Funktion die das RootLayout rendert
 export default function RootLayout({ children }) {
   return (
     <html lang="de">
       <head>
-        {/*Legt das Icon in der Menüleiste Fest*/}
-        <link rel="icon" href="img/logo.svg" />
+        {/*Legt das Icon und den Titel in der Menüleiste Fest*/}
+        <link rel="icon" href="img/logo.png" />
+        <title>Kleiderspenden E.V</title>
       </head>
       <body>
         {/*Navigationskomponente Einfügen*/}

@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 export default function Navigation() {
     return (
         <Navbar id="navigation" collapseOnSelect expand="lg" data-bs-theme="light">
-            <Navbar.Brand href="/"><img src="/img/logo.svg" width="30" height="30" className="d-inline-block align-top" alt="Kleidungsstück" /> </Navbar.Brand>
+            <Navbar.Brand href="/"><img src="/img/logo.png" width="35" height="35" className="d-inline-block align-top" alt="Kleidungsstück" /> </Navbar.Brand>
             {/*Schaltfläche zum Zusammenklappen der Navigationsleiste*/}
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             {/*Navigationsmenü welches sich bei Bedarf aufklappt bei Bildschirmen mit einer Breite kleiner als 960px */}

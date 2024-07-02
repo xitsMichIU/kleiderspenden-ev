@@ -108,15 +108,13 @@ export default function Summary() {
                                     <ul>
                                         <li><strong>Anrede:</strong> {anredeText}</li>
                                         <li><strong>Name:</strong> {vorname} {nachname}</li>
-                                        <li><strong>Email Adresse:</strong> {email}</li>
-                                        <li><strong>Telefonnummer:</strong> {telefonnummer}</li>
                                     </ul>
 
                                     <h3>Spenden Details:</h3>
                                     <ul>
                                         <li><strong>Spendengebiet:</strong> {spendengebietText}</li>
                                         <li><strong>Gespendete Kleidung:</strong> {kleidung}</li>
-                                        <li><strong>Zeitpunkt der Abgaberegistrierung:</strong> {currentDateTime.toLocaleString()}</li>
+                                        <li><strong>Zeitpunkt der Abgabe:</strong> {currentDateTime.toLocaleString()}</li>
                                     </ul>
                                 </Col>
                             </Row>

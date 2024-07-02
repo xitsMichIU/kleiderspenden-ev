@@ -16,7 +16,7 @@ function About() {
                 <Row>
                     <Col>
                         <h1>Vereinsgeschichte</h1>
-                        <p>In der Stadt Singen am Hohentwiel beschlossen in den 60er Jahren einige Bürgerinnen und Bürger, einen Kleiderspendenverein ins Leben zu rufen, um Bedürftigen in der Region zu helfen. Nachdem der Verein sich etabliert hatte, wurde das Einsatzgebiet auf Krisenregionen weltweit ausgeweitet.</p>
+                        <p>In der Stadt Singen am Hohentwiel beschlossen in den 60er Jahren einige Hans und Maria Störk, einen Kleiderspendenverein ins Leben zu rufen, um Bedürftigen in der Region zu helfen. Nachdem wir uns etabliert hatten, wurde das Einsatzgebiet auf Krisenregionen weltweit ausgeweitet.</p>
                     </Col>
                 </Row>
 
