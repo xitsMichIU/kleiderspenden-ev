@@ -70,7 +70,7 @@ export default function Summary() {
     }
 
     return (
-        <Container>
+        <Container fluid>
             <Suspense>
                 {abholmethode === "1" ? (
                     <div>
