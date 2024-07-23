@@ -109,61 +109,61 @@ export default function Formular() {
 
             //Validierung des Feldes Krisenregion.
             if (spendengebiet === "") {
-                setCustomValidationKrisenregion('custom-select is-invalid');
+                setCustomValidationKrisenregion('is-invalid');
                 error = true;
             } else if (spendengebiet === "0") {
-                setCustomValidationKrisenregion('custom-select is-invalid');
+                setCustomValidationKrisenregion('is-invalid');
                 error = true;
             } else {
-                setCustomValidationKrisenregion('custom-select is-valid');
+                setCustomValidationKrisenregion('is-valid');
             }
 
             //Validierung des Feldes Anrede.
             if (anrede === "") {
-                setCustomValidationAnrede('custom-select is-invalid');
+                setCustomValidationAnrede('is-invalid');
                 error = true;
             } else if (anrede === "0") {
-                setCustomValidationAnrede('custom-select is-invalid');
+                setCustomValidationAnrede('is-invalid');
                 error = true;
             } else {
-                setCustomValidationAnrede('custom-select is-valid');
+                setCustomValidationAnrede('is-valid');
             }
 
             //Validierung des Feldes Vorname.
             if (vorname === "") {
-                setCustomValidationVorname('custom-select is-invalid');
+                setCustomValidationVorname('is-invalid');
                 error = true;
             } else {
-                setCustomValidationVorname('custom-select is-valid');
+                setCustomValidationVorname('is-valid');
             }
 
             //Validierung des Feldes Nachname.
             if (nachname === "") {
-                setCustomValidationNachname('custom-select is-invalid');
+                setCustomValidationNachname('is-invalid');
                 error = true;
             } else {
-                setCustomValidationNachname('custom-select is-valid');
+                setCustomValidationNachname('is-valid');
             }
 
             //Validierung des Feldes Straße.
             if (strasse === "") {
-                setCustomValidationStrasse('custom-select is-invalid');
+                setCustomValidationStrasse('is-invalid');
                 error = true;
             } else {
-                setCustomValidationStrasse('custom-select is-valid');
+                setCustomValidationStrasse('is-valid');
             }
 
             //Validierung des Feldes Hausnummer.
             if (hausnummer === "") {
-                setCustomValidationHausnummer('custom-select is-invalid');
+                setCustomValidationHausnummer('is-invalid');
                 error = true;
             } else {
-                setCustomValidationHausnummer('custom-select is-valid');
+                setCustomValidationHausnummer('is-valid');
             }
 
             //Validierung des Feldes PLZ.
             if (plz === "") {
-                setCustomValidationPLZ('custom-select is-invalid');
+                setCustomValidationPLZ('is-invalid');
                 error = true;
             } else if (plz !== "") {
 
@@ -181,53 +181,53 @@ export default function Formular() {
 
                 //Wenn eine der Bedingungen falsch ist wird ein Fehler angezeigt.
                 if (beginntMit78 && nichtLaengerAls5 && nichtKleinerAls5 && nurZahlen0Bis9) {
-                    setCustomValidationPLZ('custom-select is-valid');
+                    setCustomValidationPLZ('is-valid');
                 } else {
-                    setCustomValidationPLZ('custom-select is-invalid');
+                    setCustomValidationPLZ('is-invalid');
                     error = true;
                 }
             }
 
             //Validierung des Feldes Ort.
             if (ort === "") {
-                setCustomValidationOrt('custom-select is-invalid');
+                setCustomValidationOrt('is-invalid');
                 error = true;
             } else {
-                setCustomValidationOrt('custom-select is-valid');
+                setCustomValidationOrt('is-valid');
             }
 
             //Validierung des Feldes DataPrivacy.
             if (dataPrivacy === false) {
-                setCustomValidationDataPrivacy('custom-select is-invalid');
+                setCustomValidationDataPrivacy('is-invalid');
                 error = true;
             } else {
-                setCustomValidationDataPrivacy('custom-select is-valid');
+                setCustomValidationDataPrivacy('is-valid');
             }
 
             //Validierung des Feldes Kleiderauswahl.
             if (gewaehlteKleidung.length == 0) {
-                setCustomValidationAnzahlKleider('custom-select is-invalid');
+                setCustomValidationAnzahlKleider('is-invalid');
                 error = true;
             } else {
-                setCustomValidationAnzahlKleider('custom-select is-valid');
+                setCustomValidationAnzahlKleider('is-valid');
             }
 
             //Validierung des Feldes Telefonnummer.
             if (telefonnummer == "") {
-                setCustomValidationTelefonnummer('custom-select is-invalid');
+                setCustomValidationTelefonnummer('is-invalid');
                 error = true;
             } else {
-                setCustomValidationTelefonnummer('custom-select is-valid');
+                setCustomValidationTelefonnummer('is-valid');
             }
 
-            //Validierung des Feldes Email (Übernommen aus https://emailregex.com/index.html, last checked 02.07.2024)
+            //Validierung des Feldes Email (Übernommen aus https://www.regular-expressions.info/email.html, last checked 02.07.2024)
             const emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-                
+
             if (emailRegex.test(email) === false) {
-                setCustomValidationEmail('custom-select is-invalid');
+                setCustomValidationEmail('is-invalid');
                 error = true;
             } else {
-                setCustomValidationEmail('custom-select is-valid');
+                setCustomValidationEmail('is-valid');
             }
 
             //Wurde kein Fehler gefunden, wird das Formular abgesendet.
@@ -253,56 +253,56 @@ export default function Formular() {
 
             //Validierung des Feldes Anrede.
             if (anrede === "") {
-                setCustomValidationAnrede('custom-select is-invalid');
+                setCustomValidationAnrede('is-invalid');
                 error = true;
             } else if (anrede === "0") {
-                setCustomValidationAnrede('custom-select is-invalid');
+                setCustomValidationAnrede('is-invalid');
                 error = true;
             } else {
-                setCustomValidationAnrede('custom-select is-valid');
+                setCustomValidationAnrede('is-valid');
             }
 
             //Validierung des Feldes Vorname.
             if (vorname === "") {
-                setCustomValidationVorname('custom-select is-invalid');
+                setCustomValidationVorname('is-invalid');
                 error = true;
             } else {
-                setCustomValidationVorname('custom-select is-valid');
+                setCustomValidationVorname('is-valid');
             }
 
             //Validierung des Feldes Nachname.
             if (nachname === "") {
-                setCustomValidationNachname('custom-select is-invalid');
+                setCustomValidationNachname('is-invalid');
                 error = true;
             } else {
-                setCustomValidationNachname('custom-select is-valid');
+                setCustomValidationNachname('is-valid');
             }
 
             //Validierung des Feldes Krisenregion.
             if (spendengebiet === "") {
-                setCustomValidationKrisenregion('custom-select is-invalid');
+                setCustomValidationKrisenregion('is-invalid');
                 error = true;
             } else if (spendengebiet === "0") {
-                setCustomValidationKrisenregion('custom-select is-invalid');
+                setCustomValidationKrisenregion('is-invalid');
                 error = true;
             } else {
-                setCustomValidationKrisenregion('custom-select is-valid');
+                setCustomValidationKrisenregion('is-valid');
             }
 
             //Validierung des Feldes Kleiderauswahl.
             if (gewaehlteKleidung.length == 0) {
-                setCustomValidationAnzahlKleider('custom-select is-invalid');
+                setCustomValidationAnzahlKleider('is-invalid');
                 error = true;
             } else {
-                setCustomValidationAnzahlKleider('custom-select is-valid');
+                setCustomValidationAnzahlKleider('is-valid');
             }
 
             //Validierung des Feldes DataPrivacy.
             if (dataPrivacy === false) {
-                setCustomValidationDataPrivacy('custom-select is-invalid');
+                setCustomValidationDataPrivacy('is-invalid');
                 error = true;
             } else {
-                setCustomValidationDataPrivacy('custom-select is-valid');
+                setCustomValidationDataPrivacy('is-valid');
             }
 
             //Wurde ein Fehler gefunden wird, wird das Formular nicht abgesendet.
