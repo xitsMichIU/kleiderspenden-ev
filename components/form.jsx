@@ -176,11 +176,11 @@ export default function Formular() {
                 //Überprüft, ob die Länge des Textes nicht mehr als 5 Zeichen beträgt.
                 const nichtKleinerAls5 = plz.length >= 5;
 
-                //Überprüft, ob alle Zeichen im Text Zahlen von 1 bis 9 sind.
-                const nurZahlen1Bis9 = /^[0-9]+$/.test(plz);
+                //Überprüft, ob alle Zeichen im Text Zahlen von 0 bis 9 sind.
+                const nurZahlen0Bis9 = /^[0-9]+$/.test(plz);
 
                 //Wenn eine der Bedingungen falsch ist wird ein Fehler angezeigt.
-                if (beginntMit78 && nichtLaengerAls5 && nichtKleinerAls5 && nurZahlen1Bis9) {
+                if (beginntMit78 && nichtLaengerAls5 && nichtKleinerAls5 && nurZahlen0Bis9) {
                     setCustomValidationPLZ('custom-select is-valid');
                 } else {
                     setCustomValidationPLZ('custom-select is-invalid');
@@ -433,9 +433,8 @@ export default function Formular() {
                                         </Form.Group>
                                         <Form.Group className="mb-2" as={Col} xs={6} md={6} lg={6} controlId="kleidungsauswahl1">
                                             <Clothes onClothesSelection={handleKleidungsAuswahl} />
-                                            {/*Read only Feld das den aktuellen Wert der Ausgewählten Kleider Enthält*/}
-                                            {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert das Arrays mindestens 1 ist*/}
-                                            <Form.Control style={{ display: 'none' }} className={customValidationAnzahlKleider} value={gewaehlteKleidung.length} readOnly />
+                                            {/*Das Feld ist unsichtbar und wird nur dafür verwendet die Hinwesie der Validierung anzeigen zu können*/}
+                                            <Form.Control style={{ display: 'none' }} className={customValidationAnzahlKleider} readOnly />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
@@ -451,7 +450,6 @@ export default function Formular() {
                                     <Button type="submit" className="mb-3">Abholung beauftragen</Button>
                                 </>
                             )
-
                         }
                         //Option für die Abgabe an der Geschäftsstelle    
                         else if (abholmethode === "2") {
@@ -498,15 +496,12 @@ export default function Formular() {
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
-                                        <Form.Group className="mb-2" as={Col} xs={6} md={6} lg={6} controlId="kleidungsauswahl2">
-                                            {/* Die handleKleidungsAuswahl-Funktion wird als Prop an die Kleidungskomponente übergeben. 
-                                            Sobald sich die Kleidungsauswahl ändert, wird mit useEffect in der Kleidungskomponente die Prop aufgerufen und die Funktion "handleKleidungsAuswahl" ausgeführt, 
-                                            welche die Variable "gewaehlteKleidung" mit den neuesten Werten aktualisiert. */}
+                                        <Form.Group className="mb-2" as={Col} xs={6} md={6} lg={6} controlId="kleidungsauswahl1">
                                             <Clothes onClothesSelection={handleKleidungsAuswahl} />
-                                            {/*Read only Feld das den aktuellen Wert der Ausgewählten Kleider Enthält*/}
-                                            {/*Das Feld ist unsichtbar und dient nur der Evaluierung ob der Wert mindestens 1 ist*/}
-                                            <Form.Control style={{ display: 'none' }} className={customValidationAnzahlKleider} value={gewaehlteKleidung.length} readOnly />
+                                            {/*Das Feld ist unsichtbar und wird nur dafür verwendet die Hinwesie der Validierung anzeigen zu können*/}
+                                            <Form.Control style={{ display: 'none' }} className={customValidationAnzahlKleider} readOnly />
                                             <Form.Control.Feedback type="invalid">Eingabe prüfen!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="valid">Eingabe korrekt!</Form.Control.Feedback>
                                         </Form.Group>
                                     </Row>
 

@@ -37,7 +37,7 @@ export default function Clothes({ onClothesSelection }) {
                     if (prevItem !== item) {
 
                         //Fügt das jeweilige Element in die neue Liste hinzu.
-                        updatedItems.push(selectedItem);
+                        updatedItems.push(prevItem);
                     }
                 }
 
