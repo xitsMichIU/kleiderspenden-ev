@@ -22,7 +22,7 @@ export default function Home() {
       </Container>
 
       <Container fluid>
-        <h1>Willkommen beim Kleiderspenden e.V.</h1>
+        <h1>Willkommen beim Verein Kleiderspenden e.V.</h1>
         <p>Wir sind ein gemeinnütziger Verein im Hegau und nehmen Kleiderspenden entgegen.</p>
         {/*xs stellt sicher das die Karten untereinander angezeigt werden*/}
         <Row xs={1} md={2} className="g-4 mb-4">

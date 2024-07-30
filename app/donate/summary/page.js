@@ -76,7 +76,7 @@ export default function Summary() {
                     <div>
                         <h1>Abholung erfolgreich beauftragt!</h1>
                         <h3>Vielen Dank, {anredeText} {nachname}!</h3>
-                        <p>Wir sehen uns bei der Abholung! Nachfolgend eine Übersicht ihrer übermittelten Daten.</p>
+                        <p>Wir sehen uns bei der Abholung! Nachfolgend eine Übersicht Ihrer übermittelten Daten.</p>
                         <Row>
                             <Col>
                                 <h3>Persönliche Angaben im Überblick:</h3>

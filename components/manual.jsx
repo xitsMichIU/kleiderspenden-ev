@@ -5,7 +5,7 @@ export default function Manual() {
     return (
         <Accordion defaultActiveKey="0" as={Col} xs={12} md={12} lg={12}>
             <Accordion.Item eventKey="1">
-                <Accordion.Header>Anleitung Ausklappen</Accordion.Header>
+                <Accordion.Header>Anleitung ausklappen</Accordion.Header>
                 <Accordion.Body>
                     <Row>
                         <Col>
@@ -13,7 +13,7 @@ export default function Manual() {
                             <p><strong>Schritt 1: Methode wählen</strong></p>
                             <p>Sie können auf zwei verschiedene Arten Kleidung spenden:</p>
                             <ol>
-                                <li><strong>Abholung durch ein Sammelfahrzeug:</strong> Geben Sie ihre Kontaktdaten an, und ein Sammelfahrzeug wird die Kleidung abholen. Bitte beachten Sie, dass dies nur im Postleitzahlenbereich 78*** erfolgen kann. Wohnen Sie außerhalb dieses Bereichs, können Sie die Spende gerne in unserer Filiale vorbeibringen.</li>
+                                <li><strong>Abholung durch ein Sammelfahrzeug:</strong> Geben Sie ihre Kontaktdaten an und ein Sammelfahrzeug wird die Kleidung abholen. Bitte beachten Sie, dass dies nur im Postleitzahlenbereich 78*** erfolgen kann. Wohnen Sie außerhalb dieses Bereichs, können Sie die Spende gerne in unserer Filiale vorbeibringen.</li>
                                 <li><strong>Abgabe in der Geschäftsstelle:</strong> Sie können auch gerne bei uns in der Filiale vorbeikommen. Sie können Ihre Spende entweder vorab registrieren oder die Spende erst bei Übergabe registrieren. Die Anschrift und Öffnungszeiten unserer Geschäftsstelle finden Sie <a href="/about" target="_blank">hier.</a></li>
                             </ol>
                             <p><strong>Schritt 2: Krisengebiet wählen</strong></p>
